@@ -12,15 +12,15 @@ module.exports = {
             setTimeout(() => { process.exit(); }, 2000);
         }
         else {
-            const shutdownError = new Discord.MessageEmbed()
-                .setColor('#0339fc')
+            const permissionError = new Discord.MessageEmbed()
+                .setColor('#c70606')
                 .setTitle('Permission Error')
+                .setURL('https://bit.ly/2JMYqCD')
                 .setThumbnail('https://i.imgur.com/8lRaG6L.png')
-                .addField('You do not have Permission to use this command', 'Please go fuck yourself', true)
+                .addField('You do not have permissions for this command', 'Currently only the bot owner `dogmoore#0001` has access', false)
                 .setTimestamp()
                 .setFooter('APaperBot Created by dogmoore#0001');
-
-            message.channel.send(shutdownError);
+            message.channel.send(permissionError);
         }
     }
 }
