@@ -3,10 +3,10 @@ module.exports = {
     discription: 'placeholder8',
     execute(message, args) {
         let dog = '376857933067321366';
-        const owner = message.guild.owner;
+        
         const Discord = require('discord.js');
         let  success = ` `;
-        if (message.author.id === `${dog}` || `${owner}`) {
+        if (message.author.id === dog) {
 
             if (!args.length) {
                 message.delete();
@@ -22,15 +22,15 @@ module.exports = {
             }
         }
         else {
-            const sayError = new Discord.MessageEmbed()
-                .setColor('#0339fc')
+            const permissionError = new Discord.MessageEmbed()
+                .setColor('#c70606')
                 .setTitle('Permission Error')
+                .setURL('https://bit.ly/2JMYqCD')
                 .setThumbnail('https://i.imgur.com/8lRaG6L.png')
-                .addField('You do not have Permission to use this command', 'Please go fuck yourself', true)
+                .addField('You do not have permissions for this command', 'Currently only the bot owner `dogmoore#0001` has access', false)
                 .setTimestamp()
                 .setFooter('APaperBot Created by dogmoore#0001');
-
-            message.channel.send(sayError);
+            message.channel.send(permissionError);
             success = `failure`;
         }
         console.log(`Say command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n${success}\n\n`);
