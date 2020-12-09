@@ -2,6 +2,7 @@ const fs = require('fs');
 const Discord = require('discord.js');
 const { prefix, token } = require('./config.json');
 const { BotOwner, GuildOwner } = require('./permissions.json');
+
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
@@ -22,12 +23,15 @@ for (const file of commandFiles) {
     client.commands.set(command.name, command);
 }
 
+
+
 client.on('message', message => {
     
     if (!message.content.startsWith(prefix) || message.author.bot) return;
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const commandName = args.shift().toLowerCase();
     const command = client.commands.get(commandName);
+    const { AllRoles } = require('./permissions.js');
 
     try {
         if (commandName === 'love-you') {
@@ -62,10 +66,17 @@ client.on('message', message => {
 
         else if (commandName === 'help') {
             command.execute(message);
+            //console.log(`${AllRoles}`);
+        }
+        else if (commandName === 'tkick') {
+            command.execute(message, args);
+        }
+        else if (commandName === 'tban') {
+            command.execute(message, args);
         }
     }
     catch(err) {
-        console.log('command failed');
+        console.error();
     }
     finally {
         
