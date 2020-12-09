@@ -3,7 +3,7 @@ module.exports = {
     discription: 'Placeholder2',
     execute(message) {
         
-        message.channel.send(`This server's name is: ${message.guild.name}\nTotal members: ${message.guild.memberCount}`);
+        message.channel.send(`This horrible server's name is: ${message.guild.name}\nTotal whor- I mean members: ${message.guild.memberCount}`);
         console.log(`Server command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n\n`);
     }
 }
