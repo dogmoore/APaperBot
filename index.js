@@ -1,6 +1,8 @@
 const fs = require('fs');
 const Discord = require('discord.js');
 const { prefix, token } = require('./config.json');
+const emojiRegex = require('emoji-regex/RGI_Emoji.js');
+const regex = emojiRegex();
 const { BotOwner, GuildOwner } = require('./permissions.json');
 
 const client = new Discord.Client();
@@ -26,7 +28,17 @@ for (const file of commandFiles) {
 
 
 client.on('message', message => {
-    
+    let emote = "<:face_with_raised_eyebrow:786381795838656553>";
+    let mee6 = message.channel.content;
+    try {
+        if (mee6 === regex.exec(emote)) {
+            message.channel.send("<:face_with_raised_eyebrow:786381795838656553>");
+            console.log('worked');
+        }
+    }
+    catch (err) {
+        console.log('failed');
+    }
     if (!message.content.startsWith(prefix) || message.author.bot) return;
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const commandName = args.shift().toLowerCase();
@@ -76,13 +88,11 @@ client.on('message', message => {
         }
     }
     catch(err) {
-        console.error();
+        console.error(err);
     }
     finally {
         
     }
-
-
 });
 
 client.login(token);
