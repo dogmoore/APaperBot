@@ -3,10 +3,10 @@ module.exports = {
     discription: 'actually kick',
     execute(message, args) {
         const Discord = require('discord.js');
-        const { BotOwner } = require('../permissions.json');
+        const { Admin } = require('../permissions.json');
         const member = message.mentions.members.first();
         //let member2 = message.mentions.members.id();
-        if (message.author.id === `${BotOwner}`) {
+        if (`${Admin}`.includes(message.author.id)) {
             const kick = new Discord.MessageEmbed()
                 .setColor('#0339fc')
                 .setTitle('APaperModerator')
@@ -19,7 +19,7 @@ module.exports = {
                 .setTimestamp()
                 .setFooter('APaperBot Created by dogmoore#0001');
             message.channel.send(kick);
-            //member.kick();
+            member.kick(member);
         }
         else {
             const permissionError = new Discord.MessageEmbed()

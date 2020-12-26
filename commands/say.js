@@ -1,11 +1,11 @@
 module.exports = {
     name: 'say',
-    discription: 'placeholder8',
+    discription: 'Makes the bot say something',
     execute(message, args) {
         let dog = '376857933067321366';
-        
+
         const Discord = require('discord.js');
-        let  success = ` `;
+        let success = ` `;
         if (message.author.id === dog) {
 
             if (!args.length) {
@@ -14,7 +14,7 @@ module.exports = {
             }
             else {
                 let sendMessage = message.content.substring(4);
-                
+
                 message.channel.send(`${sendMessage}`);
                 message.delete();
 
