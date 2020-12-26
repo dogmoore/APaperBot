@@ -8,8 +8,9 @@ module.exports = {
         if (!message.mentions.users.size) {
 
             const DmError = new Discord.MessageEmbed()
-                .setColor('#0339fc')
+                .setColor('#c70606')
                 .setTitle('Argument Error')
+                .setURL('https://bit.ly/2JMYqCD')
                 .setThumbnail('https://i.imgur.com/8lRaG6L.png')
                 .addField('What the fuck did you do', 'You need to ping someone you want to DM you cunt!', true)
                 .setTimestamp()
