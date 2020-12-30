@@ -1,7 +1,7 @@
 module.exports = {
     name: 'kick',
     discription: 'Placeholder1',
-    execute(message) {
+    execute(client, message, args) {
         const taggedUser = message.mentions.users.first();
         const Discord = require('discord.js');
         if (!message.mentions.users.size) {

@@ -1,7 +1,7 @@
 module.exports = {
     name: 'ban',
     discription: 'a joke ban command',
-    execute(message, args) {
+    execute(client, message, args) {
         const taggedUser = message.mentions.users.first();
         const Discord = require('discord.js');
         if (!message.mentions.users.size) {

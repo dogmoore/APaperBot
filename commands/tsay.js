@@ -1,7 +1,7 @@
 module.exports = {
     name: 'say',
     discription: 'Makes the bot say something',
-    execute(message, args) {
+    execute(client, message, args) {
         let dog = '376857933067321366';
         
         const Discord = require('discord.js');

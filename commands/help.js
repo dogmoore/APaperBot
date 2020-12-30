@@ -1,7 +1,7 @@
 module.exports = {
     name: 'help',
     discription: 'placeholder6',
-    execute(message) {
+    execute(client, message, args) {
         const Discord = require('discord.js');
         const { Admin} = require('../permissions.json');
         const GuildOwner = message.guild.owner;

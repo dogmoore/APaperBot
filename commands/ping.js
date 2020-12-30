@@ -1,7 +1,7 @@
 ﻿module.exports = {
     name: 'ping',
     discription: 'ping!',
-    async execute(message, args) {
+    async execute(client, message, args) {
         try {
             const Discord = require('discord.js');
             const client = new Discord.Client();

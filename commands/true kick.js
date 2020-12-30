@@ -1,7 +1,7 @@
 module.exports = {
     name: 'tkick',
     discription: 'actually kick',
-    execute(message, args) {
+    execute(client, message, args) {
         const Discord = require('discord.js');
         const { Admin } = require('../permissions.json');
         const member = message.mentions.members.first();

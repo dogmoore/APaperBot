@@ -1,7 +1,7 @@
 module.exports = {
     name: 'shutdown',
     discription: 'Shuts down the bot',
-    execute(message) {
+    execute(client, message, args) {
         const Discord = require('discord.js');
         const { SuperUserID } = require('../permissions.json');
         const { prefix } = require('../config.json');

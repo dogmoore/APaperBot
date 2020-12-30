@@ -1,7 +1,7 @@
 module.exports = {
     name: 'superuser',
     discription: 'lists the current super-users',
-    execute(message, args) {
+    execute(client, message, args) {
         const { SuperUserList } = require('../permissions.json');
         const Discord = require('discord.js');
         try {

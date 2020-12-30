@@ -1,7 +1,7 @@
 module.exports = {
     name: 'say',
     discription: 'Makes the bot say something',
-    execute(message, args) {
+    execute(client, message, args) {
         const { BotOwner } = require('../permissions.json');
         const Discord = require('discord.js');
         let success = ``;

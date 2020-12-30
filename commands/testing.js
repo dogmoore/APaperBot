@@ -1,7 +1,7 @@
 module.exports = {
     name: 'testing',
     discription: 'placeholder7',
-    execute(message, args) {
+    execute(client, message, args) {
         const Discord = require('discord.js');
         if (!args.length) {
 
