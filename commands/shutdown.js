@@ -10,7 +10,7 @@ module.exports = {
                 console.log(`Shutdown command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n\n`);
                 console.log('shutting down...');
                 message.reply('You fucking killed me!');
-                setTimeout(() => { process.exit(); }, 2000);
+                // setTimeout(() => { process.exit(); }, 2000);
             }
             else {
                 const permissionError = new Discord.MessageEmbed()
