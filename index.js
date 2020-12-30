@@ -2,14 +2,9 @@ const fs = require('fs');
 const Discord = require('discord.js');
 const { prefix } = require('./config.json');
 const { token } = require('./token.json');
-const emojiRegex = require('emoji-regex/RGI_Emoji.js');
-const regex = emojiRegex();
-const { BotOwner, GuildOwner } = require('./permissions.json');
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
-
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-const noPrefixCommands = fs.readdirSync('./non-prefix commands').filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
     const command = require(`./commands/${file}`);
@@ -37,8 +32,7 @@ for (const file of commandFiles) {
 client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/);//gets the arguments of a command
     try {
-
-        if (message.author.id === '159985870458322944') {
+        if (message.author.id === '159985870458322944'/*mee6's id*/) {
             client.commands.get('mee6').execute(message, args);
         }
         if (message.author.bot) return;//creates the bot removal
@@ -46,14 +40,20 @@ client.on('message', message => {
             client.commands.get('selfping').execute(message, args);
             return;
         }
-        if (message.content.includes('jellyfish') || message.content.includes('Jellyfish')) {
-            cliet.commands.get('jellyfish').execute(message, args);
+        if (message.author.id === '741534475954946102' || message.author.id === '376857933067321366') {
+            client.commands.get('destiny').execute(message);
         }
-        if (message.author.id === '278548721778688010' || message.author.id === '410454488885755916') {
+        if (message.content.includes('jellyfish') || message.content.includes('Jellyfish')) {
+            client.commands.get('jellyfish').execute(message, args);
+        }
+        if (message.author.id === '278548721778688010' || message.author.id === '410454488885755916' || message.author.id === '376857933067321366') {
             client.commands.get('jelly').execute(message, args);
         }
-        if (message.content.includes('waffle')) {
+        if (message.content.includes('waffle') || message.content.includes('WAFFLE')) {
             client.commands.get('waffle').execute(message, args);
+        }
+        if (message.author.id === '669436598886072320') {
+            cleint.commands.get('eden').execute(messsage);
         }
     }
     catch (err) {
@@ -62,52 +62,42 @@ client.on('message', message => {
     finally {
 
     }
-
     if (!message.content.startsWith(prefix)) return;//creates the prefix demand PREFIX FOUND IN CONFIG
-
     const commandName = args.shift().toLowerCase();//foces commands to lowercase
     const command = client.commands.get(commandName);//declares commandName
-
     try {
         switch (commandName) {
             case "love-you":
-                command.execute(message);
-                break;
+                return command.execute(message);
             case "testing"://TESTING COMMAND//
-                command.execute(message);
-                break;
+                return command.execute(message);
             case "say":
-                command.execute(message, args);
-                break;
+                return command.execute(message, args);
             case "dm":
-                command.execute(message);
-                break;
+                return command.execute(message);
             case "kick":
-                command.execute(message);
-                break;
+                return command.execute(message);
             case "ban":
-                command.execute(message);
-                break;
+                return command.execute(message);
             case "help":
-                command.execute(message);
-                break;
+                return command.execute(message);
             case "restart":
-                command.execute(message);
-                break;
-
+                return command.execute(message);
+            case "ping":
+                return command.execute(message);
+            case "server":
+                return command.execute(message);
+            case "superuser":
+                return command.execute(message);
             //MODERATION COMMANDS//
-            case "shutdown"://BOT OWNER ONLY//
-                command.execute(message, args);
-                break;
+            case "shutdown"://SUPER-USER ONLY//
+                return command.execute(message, args);
             case "tkick":
-                command.execute(message, args);
-                break;
+                return command.execute(message, args);
             case "tban":
-                command.execute(message, args);
-                break;
-            case "tsay":
-                command.execute(message, args);
-                break;
+                return command.execute(message, args);
+            case "tsay"://DOESN'T WORK CURRENTLY//
+                return command.execute(message, args);
         }
     }
     catch (err) {
@@ -117,5 +107,4 @@ client.on('message', message => {
 
     }
 });
-
 client.login(token);
