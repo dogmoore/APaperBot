@@ -12,13 +12,10 @@ module.exports = {
                 .addField('What the fuck did you do', 'You need to ping someone to ban you cunt!', true)
                 .setTimestamp()
                 .setFooter('If this is a mistake, go fuck yourself');
-
             message.channel.send(banError);
         }
         else {
-
             message.channel.send(`You wanted to ban ${taggedUser.username}? I don't think I will let you, I like having them around!`);
-
         }
         console.log(`Joke ban command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n\n`);
     }

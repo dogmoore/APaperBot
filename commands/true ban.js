@@ -17,10 +17,8 @@ module.exports = {
                         .addField('If you want to ban someone, ping them!', '\u200B', true)
                         .setTimestamp()
                         .setFooter('APaperBot Created by dogmoore#0001');
-
                     message.channel.send(banError);
                 }
-                
                 else if (member !== `${Admin}`.includes(message.author.id)) {
                     const ban = new Discord.MessageEmbed()
                         .setColor('#0339fc')
@@ -29,7 +27,6 @@ module.exports = {
                         .setThumbnail('https://i.imgur.com/8lRaG6L.png')
                         .addFields(
                             { name: `User ${member} was ban from ${message.guild.name}!`, value: '\u200B' },
-
                         )
                         .setTimestamp()
                         .setFooter('APaperBot Created by dogmoore#0001');
@@ -45,7 +42,6 @@ module.exports = {
                         .addField('You can not ban this person', '\u200B', true)
                         .setTimestamp()
                         .setFooter('APaperBot Created by dogmoore#0001');
-
                     message.channel.send(banError2);
                 }
             }
@@ -59,7 +55,6 @@ module.exports = {
                     .setTimestamp()
                     .setFooter('APaperBot Created by dogmoore#0001');
                 message.channel.send(permissionError);
-
             }
         }
         catch (err) {

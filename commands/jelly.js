@@ -6,11 +6,13 @@ module.exports = {
         try {
             if (message.content.includes('>:D')) {
                 try {
-                    let x = 4;
+                    let x = 3;
                     function getRandomInt(max) {
-                        return Math.floor(Math.random() * Math.floor(max));
+                        return Math.floor(Math.random() * Math.floor(max) + 0);
                     }
-                    if (getRandomInt(x) == 0) return;
+                    if (getRandomInt(x) == 0) {
+                        message.channel.send('get off your high horse Jellybob!');
+                    }
                     else if (getRandomInt(x) == 1) {
                         message.channel.send('Jelly be nice now');
                     }
@@ -23,12 +25,13 @@ module.exports = {
                     else {
                         message.channel.send('fuck');
                     }
+                    console.log('prefixless command \'Jelly\'was issued\n]n');
                 }
                 catch (err) {
                     console.error(err);
                 }
                 finally {
-
+                    
                 }
             }
         }
@@ -36,7 +39,8 @@ module.exports = {
             console.error(err);
         }
         finally {
-
+            
         }
+        
     }
 }

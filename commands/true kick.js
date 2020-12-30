@@ -5,7 +5,6 @@ module.exports = {
         const Discord = require('discord.js');
         const { Admin } = require('../permissions.json');
         const member = message.mentions.members.first();
-        //let member2 = message.mentions.members.id();
         if (`${Admin}`.includes(message.author.id)) {
             const kick = new Discord.MessageEmbed()
                 .setColor('#0339fc')
@@ -14,7 +13,6 @@ module.exports = {
                 .setThumbnail('https://i.imgur.com/8lRaG6L.png')
                 .addFields(
                     { name: `User ${member} was kicked from ${message.guild.name}!`, value: '\u200B' },
-                    
                 )
                 .setTimestamp()
                 .setFooter('APaperBot Created by dogmoore#0001');
