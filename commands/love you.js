@@ -1,7 +1,7 @@
 ﻿module.exports = {
     name: 'love-you',
     discription: 'Placeholder5',
-    execute(message) {
+    execute(client, message, args) {
         const { BotOwner } = require('../permissions.json');
         let destiny = `741534475954946102`;
         let andrew = `369229841062559767`;
