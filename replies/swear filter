@@ -1,0 +1,19 @@
+module.exports = (client, message) => {
+  const Discord = require('discord.js');
+  const { prefix } = require('../config.json');
+  const { swear, swearIgnore } = require('..//swearWords.json');
+  try {
+    if(message.author.bot) return;
+    if(message.content.startsWith(`${prefix}`)) return;
+    if (message.content.toLowerCase().includes(`${swear}`)) {
+      if (message.content.toLowerCase().includes(`${swearIgnore}`)) return;
+      message.reply('Please watch your fucking language')
+    }
+  }
+  catch (err) {
+    console.error(err);
+  }
+  finally {
+
+  }
+}

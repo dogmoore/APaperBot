@@ -1,0 +1,4 @@
+{
+  "swear": [ "fuck", "sex", "damn", "hell", "shut up", "cunt", "pussy", "asshole", "ass" ],
+  "swearIgnore": [ "assassin" ]
+}

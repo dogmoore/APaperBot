@@ -3,7 +3,7 @@ module.exports = {
     discription: 'placeholder6',
     execute(client, message, args) {
         const Discord = require('discord.js');
-        const { Admin} = require('../permissions.json');
+        const { Admin } = require('../permissions.json');
         const GuildOwner = message.guild.owner;
         const { prefix } = require('../config.json');
         try {
