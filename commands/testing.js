@@ -1,6 +1,6 @@
 module.exports = {
     name: 'testing',
-    discription: 'placeholder7',
+    description: 'a testing command ONLY',
     execute(client, message, args) {
         const Discord = require('discord.js');
         if (!args.length) {

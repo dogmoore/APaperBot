@@ -1,6 +1,6 @@
 module.exports = {
     name: 'tban',
-    discription: 'actually ban',
+    description: 'actually ban',
     execute(client, message, args) {
         const Discord = require('discord.js');
         const { Admin } = require('../permissions.json');
@@ -61,7 +61,7 @@ module.exports = {
             console.log(err);
         }
         finally {
-            
+
         }
     }
 }

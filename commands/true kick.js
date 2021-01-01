@@ -1,6 +1,6 @@
 module.exports = {
     name: 'tkick',
-    discription: 'actually kick',
+    description: 'actually kick',
     execute(client, message, args) {
         const Discord = require('discord.js');
         const { Admin } = require('../permissions.json');
@@ -29,7 +29,7 @@ module.exports = {
                 .setTimestamp()
                 .setFooter('APaperBot Created by dogmoore#0001');
             message.channel.send(permissionError);
-                
+
         }
     }
 }

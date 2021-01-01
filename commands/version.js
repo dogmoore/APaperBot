@@ -1,6 +1,6 @@
 module.exports = {
     name: 'version',
-    discription: 'Placeholder4',
+    description: 'says the current version',
     execute(client, message, args) {
         const Discord = require('discord.js');
         const { version } = require('../config.json');

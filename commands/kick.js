@@ -1,6 +1,6 @@
 module.exports = {
     name: 'kick',
-    discription: 'Placeholder1',
+    description: 'joke kick',
     execute(client, message, args) {
         const taggedUser = message.mentions.users.first();
         const Discord = require('discord.js');

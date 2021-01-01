@@ -1,6 +1,6 @@
 module.exports = {
     name: 'help',
-    discription: 'placeholder6',
+    description: 'The current help command',
     execute(client, message, args) {
         const Discord = require('discord.js');
         const { Admin } = require('../permissions.json');

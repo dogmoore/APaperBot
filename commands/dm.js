@@ -1,6 +1,6 @@
 module.exports = {
     name: 'dm',
-    discription: 'Placeholder4',
+    description: 'joke DM',
     execute(client, message, args) {
         const Discord = require('discord.js');
         const taggedUser = message.mentions.users.first();

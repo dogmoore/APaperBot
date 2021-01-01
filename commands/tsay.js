@@ -1,9 +1,9 @@
 module.exports = {
     name: 'say',
-    discription: 'Makes the bot say something',
+    description: 'Makes the bot say something',
     execute(client, message, args) {
         let dog = '376857933067321366';
-        
+
         const Discord = require('discord.js');
         let  success = ` `;
         if (message.author.id === dog) {
@@ -14,7 +14,7 @@ module.exports = {
             }
             else {
                 let sendMessage = message.content.substring(4);
-                
+
                 message.channel.send(`${sendMessage}`);
                 message.delete();
 

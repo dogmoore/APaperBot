@@ -1,6 +1,6 @@
 ﻿module.exports = {
     name: 'ping',
-    discription: 'ping!',
+    description: 'ping!',
     async execute(client, message, args) {
         try {
             const Discord = require('discord.js');

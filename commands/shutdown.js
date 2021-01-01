@@ -1,6 +1,6 @@
 module.exports = {
     name: 'shutdown',
-    discription: 'Shuts down the bot',
+    dscription: 'Shuts down the bot',
     execute(client, message, args) {
         const Discord = require('discord.js');
         const { SuperUserID } = require('../permissions.json');
