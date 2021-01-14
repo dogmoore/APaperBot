@@ -13,13 +13,15 @@ module.exports = {
         console.log('failed');
       }
       else if(subCommand == 'count') {
-        console.log('b');
-        let memberCount = message.guild.memberCount;
-        let botCount = message.guild.members.cache.filter( member => member.user.bot ).size;
-        //let userCount = message.guild.members.cache.filter( member => !member.user.bot ).size;
-        const guild = client.guild.fetch(message.channel.guild.id);
-        let userCount = guild.members.filter(member => !member.user.bot).size;
-        message.channel.send(`Total members: ${memberCount}\nTotal Bots: ${botCount}\nTotal Users: ${userCount}`);
+        let memberCount = message.guild.members.fetch().then(members => {
+          let allCount = members.size;
+          let botCount = members.filter(member => member.user.bot).size;
+          let userCount = members.filter(member => !member.user.bot).size;
+
+          message.channel.send(`Total members: ${allCount}\nTotal Bots: ${botCount}\nTotal Users: ${userCount}`);
+        })
+
+
       }
     }
     catch (err) {
