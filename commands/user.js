@@ -4,23 +4,9 @@ module.exports = {
   execute(client, message, args) {
     try {
       const moment = require('moment');
+      let timestamp = moment().format("MMM-DD-YYYY");
       const { BotOwner } = require('../permissions.json');
       const Discord = require('discord.js');
-      let aTag = message.mentions.users.first();
-      const userInfo = new Discord.MessageEmbed()
-          .setColor('#c70606')
-          .setTitle(`User info for ${aTag.username}`)
-
-          .addFields(
-              { name: `Username:`, value: `${aTag.username}`, inline: true },
-              { name: `Tag:`, value: `${aTag.tag}`, inline: true },
-              { name: `UserID:`, value: `${aTag.id}` },
-              { name: `Account created at:`, value: `${aTag.createdAt}` },
-              { name: `Joined this server at:`, value: moment.unix(aTag.joinedAt / 1000).format('llll') },
-          )
-          .setTimestamp()
-          .setFooter('If there is a mistake, go fuck yourself');
-
       //const Roles = guild.roles;
       let subCommand = args[0];
       if(subCommand == '') {
@@ -36,32 +22,32 @@ module.exports = {
         })
       }
       else if (subCommand == 'info') {
-
         let avatarURL = aTag.displayAvatarURL({ dynamic: true });
-        if (avatarURL !== null) {
-          userInfo.setThumbnail(`${avatarURL}`)
-        }
-        /*const userInfo = new Discord.MessageEmbed()
-            .setColor('#c70606')
-            .setTitle(`User info for ${aTag.username}`)
-            .setThumbnail(`${avatarURL}`)
-            .addFields(
-                { name: `Username:`, value: `${aTag.username}`, inline: true },
-                { name: `Tag:`, value: `${aTag.tag}`, inline: true },
-                { name: `UserID:`, value: `${aTag.id}` },
-                { name: `Account created at:`, value: `${aTag.createdAt}` },
-                { name: `Joined this server at:`, value: `${message.guild.joinedAt}` },
-            )
-            .setTimestamp()
-            .setFooter('If there is a mistake, go fuck yourself');*/
-            message.channel.send(userInfo);
-      }
-    }
-    catch (err) {
-      console.error(err);
-    }
-    finally {
+        let aTag = message.mentions.users.first();
 
+        let createDateRaw = aTag.createAt.toString();
+        let createDate = createDateRaw.substring(0, createDateRaw.length-42);
+
+        const userInfo = new Discord.MessageEmbed()
+        .setColor('#c70606')
+        .setTitle(`User info for ${aTag.username}`)
+        .addFields(
+          { name: `Username:`, value: aTag.username, inline: true },
+          { name: `Tag:`, value: aTag.tag, inline: true },
+          { name: `UserID:`, value: aTag.id },
+          { name: `Account created at:`, value: createDate },
+          { name: `Joined this server at:`, value: joinTime },
+        )
+        .setTimestamp()
+        .setFooter('If there is a mistake, go fuck yourself');
+      message.channel.send(userInfo);
     }
   }
+  catch (err) {
+    console.error(err);
+  }
+  finally {
+
+  }
+}
 }
