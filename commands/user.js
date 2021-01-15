@@ -3,10 +3,12 @@ module.exports = {
   description: 'some user based commands',
   execute(client, message, args) {
     try {
-      const moment = require('moment');
-      let timestamp = moment().format("MMM-DD-YYYY");
+
       const { BotOwner } = require('../permissions.json');
       const Discord = require('discord.js');
+      let aTag = message.mentions.users.first();
+      const moment = require('moment');
+      let timestamp = moment().format("MMM-DD-YYYY");
       //const Roles = guild.roles;
       let subCommand = args[0];
       if(subCommand == '') {
@@ -23,10 +25,14 @@ module.exports = {
       }
       else if (subCommand == 'info') {
         let avatarURL = aTag.displayAvatarURL({ dynamic: true });
-        let aTag = message.mentions.users.first();
 
-        let createDateRaw = aTag.createAt.toString();
-        let createDate = createDateRaw.substring(0, createDateRaw.length-42);
+        let createDateRaw = aTag.createdTimestamp.toString();
+        let createDate2 = moment.unix(createDateRaw / 1000).format('llll').toString();
+        let createDate = createDate2.substring(0, createDateRaw.length+3);
+
+        let joinDateRaw = aTag.joinedTimestamp//.toString();
+        let joinDate2 = moment.unix(joinDateRaw / 1000).format('1111')//.toString();
+        //let joinDate = joinDate2.substring(0, joinDateRaw.length+3);
 
         const userInfo = new Discord.MessageEmbed()
         .setColor('#c70606')
@@ -36,7 +42,7 @@ module.exports = {
           { name: `Tag:`, value: aTag.tag, inline: true },
           { name: `UserID:`, value: aTag.id },
           { name: `Account created at:`, value: createDate },
-          { name: `Joined this server at:`, value: joinTime },
+          { name: `Joined this server at:`, value: 'I can\'t be bothered to find this' },
         )
         .setTimestamp()
         .setFooter('If there is a mistake, go fuck yourself');
