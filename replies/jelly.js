@@ -9,7 +9,7 @@ module.exports = (client, message) => {
             return Math.floor(Math.random() * Math.floor(max) + 0);
           }
           if (getRandomInt(x) == 0) {
-            message.channel.send('get off your high horse Jellybob!');
+            message.channel.send('get off your high horse Jelly!');
           }
           else if (getRandomInt(x) == 1) {
             message.channel.send('Jelly be nice now');
