@@ -4,6 +4,7 @@ module.exports = {
     execute(client, message, args) {
         const { BotOwner } = require('../permissions.json');
         const Discord = require('discord.js');
+        const color = require('colors');
         let success = ``;
         try {
             if (message.author.id === BotOwner) {
@@ -30,10 +31,10 @@ module.exports = {
                 message.channel.send(permissionError);
                 success = `failure`;
             }
-            console.log(`Say command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n${success}\n\n`);
+            console.log(`Say command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n${success}\n`.cyan);
         }
         catch (err) {
-            console.error(err);
+            console.error(err).red;
         }
         finally {
 

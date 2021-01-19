@@ -3,6 +3,7 @@ module.exports = {
     description: 'lists the current super-users',
     execute(client, message, args) {
         const { SuperUserList } = require('../permissions.json');
+        const color = require('colors');
         const Discord = require('discord.js');
         try {
             const superuser = new Discord.MessageEmbed()
@@ -16,10 +17,10 @@ module.exports = {
             message.channel.send(superuser);
         }
         catch (err) {
-            console.error(err);
+            console.error(err).red;
         }
         finally {
-            console.log(`super-user command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n\n`);
+            console.log(`Super-User command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n`.cyan);
         }
     }
 }

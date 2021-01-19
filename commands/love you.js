@@ -3,6 +3,7 @@
     description: 'says `i love you`',
     execute(client, message, args) {
         const { BotOwner } = require('../permissions.json');
+        const color = require('colors');
         let destiny = `741534475954946102`;
         let andrew = `369229841062559767`;
         if (message.author.id === destiny) {
@@ -17,6 +18,6 @@
         else {
             message.reply('I love you too!');
         }
-        console.log(`Love You command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n\n`);
+        console.log(`Love You command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n`.cyan);
     }
 }

@@ -4,6 +4,7 @@ module.exports = {
     execute(client, message, args) {
         const taggedUser = message.mentions.users.first();
         const Discord = require('discord.js');
+        const color = require('colors');
         if (!message.mentions.users.size) {
             const kickError = new Discord.MessageEmbed()
                 .setColor('#c70606')
@@ -17,6 +18,6 @@ module.exports = {
         else {
             message.channel.send(`You wanted to kick ${taggedUser.username}? I don't think I will let you, I like having them around!`);
         }
-        console.log(`Joke kick command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n\n`);
+        console.log(`Joke kick command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n`.cyan);
     }
 }

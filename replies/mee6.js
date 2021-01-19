@@ -1,5 +1,6 @@
 module.exports = (client, message) => {
   const Discord = require('discord.js');
+  const color = require('colors');
   let emote = "🤨";
   let mee6 = `:face_with_raised_eyebrow:787063537678942239`;
   try {
@@ -8,7 +9,7 @@ module.exports = (client, message) => {
         let channelID = message.channel.id;
         if (channelID === '759177774870036480') {
           message.reply('fuck off');
-          console.log('mee6 said something\n');
+          console.log('prefixless command \'Mee6\'was issued\n'.green);
         }
       }
       else if (message.content.includes(emote)) {
@@ -17,7 +18,7 @@ module.exports = (client, message) => {
     }
   }
   catch (err) {
-    console.error(err);
+    console.error(err.red);
   }
   finally {
 

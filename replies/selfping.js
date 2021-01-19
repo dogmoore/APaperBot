@@ -1,5 +1,6 @@
 module.exports = (client, message) => {
   const Discord = require('discord.js');
+  const color = require('colors');
   try {
     function getRandomInt(max) {
       return Math.floor(Math.random() * Math.floor(max) + 0);
@@ -79,7 +80,7 @@ module.exports = (client, message) => {
           message.channel.send(i);
 
         }
-        console.log(`Paperbot said ${i}\n`);
+        console.log(`Paperbot said ${i}\n`.green);
       }
       else {
         message.reply('politly go fuck yourself');
@@ -89,7 +90,7 @@ module.exports = (client, message) => {
     }
   }
   catch (err) {
-    console.error(err);
+    console.error(err.red);
   }
   finally {
 

@@ -4,6 +4,7 @@ module.exports = {
     execute(client, message, args) {
         const Discord = require('discord.js');
         const { Admin } = require('../permissions.json');
+        const color = require('colors');
         const GuildOwner = message.guild.owner;
         const { prefix } = require('../config.json');
         try {
@@ -34,19 +35,19 @@ module.exports = {
                     )
                     .setTimestamp()
                     .setFooter('APaperBot Created by dogmoore#0001');
-                console.log(`Admin help command used in server: ${message.guild.name}\nIssued by owner: ${message.author.tag}\n\n`);
+                console.log(`Admin help command used in server: ${message.guild.name}\nIssued by owner: ${message.author.tag}\n`.cyan.bold);
                 message.channel.send(Help);
             }
             else {
                 if (message.author === GuildOwner) {
                     message.channel.send('Ask dogmoore to add your userID to the permissions file if you wish access Admin commands');
                 }
-                console.log(`Help command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n\n`);
+                console.log(`Help command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n`.cyan);
                 message.channel.send(Help);
             }
         }
         catch (err) {
-            console.error(err);
+            console.error(err).red;
         }
         finally {
 

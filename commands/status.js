@@ -19,6 +19,6 @@ module.exports = {
   let uptimeraw = client.uptime;
   let uptime = ((uptimeraw / 1000)/60).toFixed(2);
   message.channel.send(`Online for ${uptime} minutes\nCurrent Prefix: ${prefix}\nCurrent working version: ${version}`);
-  console.log('Status command issued'.red);
+  console.log(`Status count command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n`.cyan);
   }
 }

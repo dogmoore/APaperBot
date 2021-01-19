@@ -20,12 +20,12 @@ module.exports = (client, message) => {
         else {
           message.channel.send('But edy....');
         }
-        console.log('prefixless command \'Eden\' was issued\n');
+        console.log('prefixless command \'Eden\' was issued\n'.green);
       }
     }
   }
   catch (err) {
-    console.error(err);
+    console.error(err.red);
   }
   finally {
 

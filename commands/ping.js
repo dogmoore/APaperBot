@@ -4,6 +4,7 @@
     async execute(client, message, args) {
         try {
             const Discord = require('discord.js');
+            const color = require('colors');
             const client = new Discord.Client();
             const m = await message.channel.send(':loading: **Calculating...**');
             m.edit("...")
@@ -36,11 +37,11 @@
             }
         }
         catch (err) {
-            console.error(err);
+            console.error(err).red;
         }
         finally {
 
         }
-        console.log('ping command issued')
+        console.log(`Ping command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n`.cyan);
     }
 }

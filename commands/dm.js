@@ -3,6 +3,7 @@ module.exports = {
     description: 'joke DM',
     execute(client, message, args) {
         const Discord = require('discord.js');
+        const color = require('colors');
         const taggedUser = message.mentions.users.first();
         if (!message.mentions.users.size) {
             const DmError = new Discord.MessageEmbed()
@@ -18,6 +19,6 @@ module.exports = {
         else {
             message.channel.send(`You tried to DM ${taggedUser.username} however I didn't want to`);
         }
-        console.log(`DM command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n\n`);
+        console.log(`DM command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n`.cyan);
     }
 }
