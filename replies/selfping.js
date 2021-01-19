@@ -79,7 +79,7 @@ module.exports = (client, message) => {
           message.channel.send(i);
 
         }
-        console.log(`Paperbot said ${i}`);
+        console.log(`Paperbot said ${i}\n`);
       }
       else {
         message.reply('politly go fuck yourself');

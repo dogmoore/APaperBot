@@ -6,7 +6,7 @@ module.exports = (client, message) => {
     if(message.content.startsWith(`${prefix}`)) return;
     if (message.content.includes('waffle') || message.content.includes('WAFFLE')) {
       message.channel.send('WAFFIE!');
-      console.log('waffle was mentioned\n\n');
+      console.log('waffle was mentioned\n');
     }
   }
   catch (err) {

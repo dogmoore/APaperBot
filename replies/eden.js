@@ -20,7 +20,7 @@ module.exports = (client, message) => {
         else {
           message.channel.send('But edy....');
         }
-        console.log('prefixless command \'Eden\' was issued');
+        console.log('prefixless command \'Eden\' was issued\n');
       }
     }
   }

@@ -23,7 +23,7 @@ module.exports = (client, message) => {
           else {
             message.channel.send('fuck');
           }
-          console.log('prefixless command \'Jelly\'was issued\n]n');
+          console.log('prefixless command \'Jelly\'was issued\n');
         }
         catch (err) {
           console.error(err);

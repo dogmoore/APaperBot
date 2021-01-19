@@ -4,6 +4,7 @@ const { token } = require('./token.json');
 const { dashboardtoken } = require('./dashboard.json');
 const client = new Discord.Client();
 const botdash = require('botdash.pro');
+const { Console } = require('console');
 var commandLoad;
 var eventLoad;
 var replyLoad;
@@ -54,6 +55,12 @@ fs.readdir("./replies/", (err, files) => {
     });
     console.log("Successfully loaded all replies");
     replyLoad = "All good";
+});
+
+let y = process.openStdin()
+y.addListener("data", res => {
+    let x = res.toString().trim().split(/ +/g)
+    client.channels.fetch("759170742154690560").channel.send(x.join(" "));
 });
 
 client.login(token);

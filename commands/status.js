@@ -3,6 +3,7 @@ module.exports = {
   description: 'bot\'s status',
   execute(client, message, args) {
     const { commandLoad, eventLoad, replyLoad } = require('../index.js');
+    const colors = require('colors')
     const Discord = require('discord.js');
     const { prefix, version } = require('../config.json');
     /*const statusReport = new Discord.MessageEmbed()
@@ -18,5 +19,6 @@ module.exports = {
   let uptimeraw = client.uptime;
   let uptime = ((uptimeraw / 1000)/60).toFixed(2);
   message.channel.send(`Online for ${uptime} minutes\nCurrent Prefix: ${prefix}\nCurrent working version: ${version}`);
+  console.log('Status command issued'.red);
   }
 }

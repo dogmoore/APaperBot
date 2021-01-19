@@ -8,7 +8,7 @@ module.exports = (client, message) => {
         let channelID = message.channel.id;
         if (channelID === '759177774870036480') {
           message.reply('fuck off');
-          console.log('mee6 said something\n\n');
+          console.log('mee6 said something\n');
         }
       }
       else if (message.content.includes(emote)) {
