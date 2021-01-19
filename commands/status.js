@@ -4,6 +4,7 @@ module.exports = {
   execute(client, message, args) {
     const { commandLoad, eventLoad, replyLoad } = require('../index.js');
     const Discord = require('discord.js');
+    const { prefix, version } = require('../config.json');
     /*const statusReport = new Discord.MessageEmbed()
     .setColor('#c70606')
     .setTitle(`Status check`)
@@ -16,6 +17,6 @@ module.exports = {
   message.channel.send(statusReport);*/
   let uptimeraw = client.uptime;
   let uptime = ((uptimeraw / 1000)/60).toFixed(2);
-  message.channel.send(`ONLINE FOR ${uptime} MINUTES`);
+  message.channel.send(`Online for ${uptime} minutes\nCurrent Prefix: ${prefix}\nCurrent working version: ${version}`);
   }
 }

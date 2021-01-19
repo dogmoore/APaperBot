@@ -1,11 +1,16 @@
 const fs = require('fs');
 const Discord = require('discord.js');
 const { token } = require('./token.json');
+const { dashboardtoken } = require('./dashboard.json');
 const client = new Discord.Client();
+const botdash = require('botdash.pro');
 var commandLoad;
 var eventLoad;
 var replyLoad;
 client.commands = new Discord.Collection();
+
+var dashboard = "";
+dashboard = new botdash.APIclient(dashboardtoken);
 
 let a = 1
 fs.readdir("./events/", (err, files) => {
