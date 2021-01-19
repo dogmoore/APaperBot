@@ -5,6 +5,7 @@ const { dashboardtoken } = require('./dashboard.json');
 const client = new Discord.Client();
 const botdash = require('botdash.pro');
 const { Console } = require('console');
+const color = require('colors');
 var commandLoad;
 var eventLoad;
 var replyLoad;
@@ -19,28 +20,28 @@ fs.readdir("./events/", (err, files) => {
     files.forEach(file => {
         const event = require(`./events/${file}`);
         let eventName = file.split(".")[0];
-        console.log(a + `: Attempting to load the event '${eventName}'`);
+        console.log(a + `: Attempting to load the event '${eventName}'`.blue.bold);
         a = a + 1;
         client.on(eventName, event.bind(null, client));
     });
-    console.log('Successfully loaded all events.');
+    console.log('Successfully loaded all events.'.blue.bold);
     eventLoad = 'All good';
 });
 
 fs.readdir("./commands/", (err, files) => {
     let jsfile = files.filter(f => f.split(".").pop() === "js")
     if (jsfile.length <= 0) {
-        console.log("Couldn't find commands!");
+        console.log("Couldn't find commands!".red);
         cmd = 'Something went wrong';
         return;
     };
     jsfile.forEach((f, i) => {
         let props = require(`./commands/${f}`)
-        console.log(a + `: Attempting to load the command '${props.name}'`)
+        console.log(a + `: Attempting to load the command '${props.name}'`.blue.bold)
         client.commands.set(props.name, props);
         a = a + 1;
     });
-    console.log("Successfully loaded all commands.");
+    console.log("Successfully loaded all commands.".blue.bold);
     cmd = 'All good';
 });
 
@@ -49,11 +50,11 @@ fs.readdir("./replies/", (err, files) => {
     files.forEach(file => {
         const replies = require(`./replies/${file}`);
         let eventName = file.split(".")[0];
-        console.log(a + `: Attempting to load the event '${eventName}'`);
+        console.log(a + `: Attempting to load the event '${eventName}'`.blue.bold);
         a = a + 1;
         client.on("message", replies.bind(null, client));
     });
-    console.log("Successfully loaded all replies");
+    console.log("Successfully loaded all replies".blue.bold);
     replyLoad = "All good";
 });
 
