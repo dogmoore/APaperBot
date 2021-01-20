@@ -1,6 +1,7 @@
 module.exports = (client, message) => {
   const Discord = require('discord.js');
-  const color = require('colors');
+  const Logger = require('leekslazylogger');
+  const log = new Logger;
   let emote = "🤨";
   let mee6 = `:face_with_raised_eyebrow:787063537678942239`;
   try {
@@ -9,7 +10,7 @@ module.exports = (client, message) => {
         let channelID = message.channel.id;
         if (channelID === '759177774870036480') {
           message.reply('fuck off');
-          console.log('prefixless command \'Mee6\'was issued\n'.green);
+          log.console(log.format('&aprefixless command \'Mee6\'was issued\n'));
         }
       }
       else if (message.content.includes(emote)) {
@@ -18,7 +19,7 @@ module.exports = (client, message) => {
     }
   }
   catch (err) {
-    console.error(err.red);
+    log.error(log.format(`&c${err}`));
   }
   finally {
 

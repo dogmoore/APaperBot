@@ -1,5 +1,7 @@
 module.exports = (client, message) => {
   const Discord = require('discord.js');
+  const Logger = require('leekslazylogger');
+  const log = new Logger;
   try {
     if (message.author.id === '669436598886072320') {
       if (message.content.includes('destiny') || message.content.includes('Destiny')) {
@@ -20,12 +22,12 @@ module.exports = (client, message) => {
         else {
           message.channel.send('But edy....');
         }
-        console.log('prefixless command \'Eden\' was issued\n'.green);
+        log.console(log.format('&aprefixless command \'Eden\' was issued\n'));
       }
     }
   }
   catch (err) {
-    console.error(err.red);
+    log.error(log.format(`&c${err}`));
   }
   finally {
 

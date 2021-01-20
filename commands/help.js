@@ -4,7 +4,8 @@ module.exports = {
     execute(client, message, args) {
         const Discord = require('discord.js');
         const { Admin } = require('../permissions.json');
-        const color = require('colors');
+        const Logger = require('leekslazylogger');
+        const log = new Logger;
         const GuildOwner = message.guild.owner;
         const { prefix } = require('../config.json');
         try {
@@ -35,19 +36,19 @@ module.exports = {
                     )
                     .setTimestamp()
                     .setFooter('APaperBot Created by dogmoore#0001');
-                console.log(`Admin help command used in server: ${message.guild.name}\nIssued by owner: ${message.author.tag}\n`.cyan.bold);
+                log.console(log.format(`&b&lAdmin help command used in server: ${message.guild.name}\nIssued by owner: ${message.author.tag}\n`));
                 message.channel.send(Help);
             }
             else {
                 if (message.author === GuildOwner) {
                     message.channel.send('Ask dogmoore to add your userID to the permissions file if you wish access Admin commands');
                 }
-                console.log(`Help command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n`.cyan);
+                log.console(log.format(&b`Help command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n`));
                 message.channel.send(Help);
             }
         }
         catch (err) {
-            console.error(err).red;
+            log.error(log.format(`&c${err}`));
         }
         finally {
 

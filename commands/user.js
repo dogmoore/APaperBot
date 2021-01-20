@@ -3,7 +3,8 @@ module.exports = {
   description: 'some user based commands',
   execute(client, message, args) {
     try {
-      const color = require('colors');
+      const Logger = require('leekslazylogger');
+      const log = new Logger;
       const { BotOwner } = require('../permissions.json');
       const Discord = require('discord.js');
       let aTag = message.mentions.users.first();
@@ -21,7 +22,7 @@ module.exports = {
           let userCount = members.filter(member => !member.user.bot).size;
 
           message.channel.send(`Total members: ${allCount}\nTotal Bots: ${botCount}\nTotal Users: ${userCount}`);
-          console.log(`User count command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n`.cyan);
+          log.console(log.format(`&bUser count command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n`));
         })
       }
       else if (subCommand == 'info') {
@@ -48,11 +49,11 @@ module.exports = {
         .setTimestamp()
         .setFooter('If there is a mistake, go fuck yourself');
       message.channel.send(userInfo);
-      console.log(`User info command used in server: ${message.guild.name}\nIssued by: ${message.author.tag} for: ${aTag.tag}\n`.cyan);
+      log.console(log.format(`&bUser info command used in server: ${message.guild.name}\nIssued by: ${message.author.tag} for: ${aTag.tag}\n`));
     }
   }
   catch (err) {
-    console.error(err).red;
+    log.error(log.format(`&c${err}`));
   }
   finally {
 

@@ -4,7 +4,8 @@ module.exports = {
     execute(client, message, args) {
         const { BotOwner } = require('../permissions.json');
         const Discord = require('discord.js');
-        const color = require('colors');
+        const Logger = require('leekslazylogger');
+        const log = new Logger;
         let success = ``;
         try {
             if (message.author.id === BotOwner) {
@@ -31,10 +32,10 @@ module.exports = {
                 message.channel.send(permissionError);
                 success = `failure`;
             }
-            console.log(`Say command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n${success}\n`.cyan);
+            log.console(log.format(`&bSay command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n${success}\n`));
         }
         catch (err) {
-            console.error(err).red;
+            log.error(log.format(`&c${err}`));
         }
         finally {
 

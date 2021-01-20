@@ -3,7 +3,8 @@ module.exports = {
   description: 'bot\'s status',
   execute(client, message, args) {
     const { commandLoad, eventLoad, replyLoad } = require('../index.js');
-    const colors = require('colors')
+    const Logger = require('leekslazylogger');
+    const log = new Logger;
     const Discord = require('discord.js');
     const { prefix, version } = require('../config.json');
     /*const statusReport = new Discord.MessageEmbed()
@@ -19,6 +20,6 @@ module.exports = {
   let uptimeraw = client.uptime;
   let uptime = ((uptimeraw / 1000)/60).toFixed(2);
   message.channel.send(`Online for ${uptime} minutes\nCurrent Prefix: ${prefix}\nCurrent working version: ${version}`);
-  console.log(`Status count command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n`.cyan);
+  log.console(log.format(`&bStatus command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n`));
   }
 }

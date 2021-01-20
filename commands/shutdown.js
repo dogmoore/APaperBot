@@ -3,13 +3,14 @@ module.exports = {
     dscription: 'Shuts down the bot',
     execute(client, message, args) {
         const Discord = require('discord.js');
-        const color = require('colors');
+        const Logger = require('leekslazylogger');
+        const log = new Logger;
         const { SuperUserID } = require('../permissions.json');
         const { prefix } = require('../config.json');
         try {
             if (message.author.id === `376857933067321366`) {
-                console.log(`Shutdown command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n`.cyan);
-                console.log('shutting down...'.yellow);
+                log.console(log.format(`&bShutdown command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n`));
+                log.console(log.format('&6shutting down...'));
                 message.reply('You fucking killed me!');
                 setTimeout(() => { process.exit(); }, 2000);
             }
@@ -27,7 +28,7 @@ module.exports = {
             }
         }
         catch (err) {
-            console.error(err).red;
+            log.error(log.format(`&c${err}`));
         }
         finally {
 

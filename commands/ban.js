@@ -4,7 +4,8 @@ module.exports = {
     execute(client, message, args) {
         const taggedUser = message.mentions.users.first();
         const Discord = require('discord.js');
-        const color = require('colors');
+        const Logger = require('leekslazylogger');
+        const log = new Logger;
         if (!message.mentions.users.size) {
             const banError = new Discord.MessageEmbed()
                 .setColor('#c70606')
@@ -18,6 +19,6 @@ module.exports = {
         else {
             message.channel.send(`You wanted to ban ${taggedUser.username}? I don't think I will let you, I like having them around!`);
         }
-        console.log(`Joke ban command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n`.cyan);
+        log.console(log.format(`&bJoke ban command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n`));
     }
 }

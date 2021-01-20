@@ -1,6 +1,7 @@
 module.exports = (client, message) => {
   const Discord = require('discord.js');
-  const color = require('colors');
+  const Logger = require('leekslazylogger');
+  const log = new Logger;
   try {
     if (message.author.id === '278548721778688010' || message.author.id === '410454488885755916' || message.author.id === '376857933067321366') {
       if (message.content.includes('>:D')) {
@@ -24,10 +25,10 @@ module.exports = (client, message) => {
           else {
             message.channel.send('fuck');
           }
-          console.log('prefixless command \'Jelly\'was issued\n'.green);
+          log.console(log.format('&aprefixless command \'Jelly\'was issued\n'));
         }
         catch (err) {
-          console.error(err.red);
+          log.error(log.format(`&c${err}`));
         }
         finally {
 
@@ -35,8 +36,8 @@ module.exports = (client, message) => {
       }
     }
   }
-  catch (err) {
-    console.error(err.red);
+  catch  {
+
   }
   finally {
 

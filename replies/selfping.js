@@ -1,6 +1,7 @@
 module.exports = (client, message) => {
   const Discord = require('discord.js');
-  const color = require('colors');
+  const Logger = require('leekslazylogger');
+  const log = new Logger;
   try {
     function getRandomInt(max) {
       return Math.floor(Math.random() * Math.floor(max) + 0);
@@ -80,7 +81,7 @@ module.exports = (client, message) => {
           message.channel.send(i);
 
         }
-        console.log(`Paperbot said ${i}\n`.green);
+        log.console(log.format(`&2Paperbot said ${i}\n`));
       }
       else {
         message.reply('politly go fuck yourself');
@@ -90,7 +91,7 @@ module.exports = (client, message) => {
     }
   }
   catch (err) {
-    console.error(err.red);
+    log.error(log.format(`&c${err}`));
   }
   finally {
 

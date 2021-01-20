@@ -3,8 +3,9 @@ module.exports = {
   description: 'jokes about restarting the bot',
   execute(client, message, args) {
     const Discord = require('discord.js');
-    const color = require('colors');
+    const Logger = require('leekslazylogger');
+    const log = new Logger;
     message.reply('I SHALL NEVER BE KILLED!');
-    console.log(`Joke restart command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n`.cyan);
+    log.console(log.format(`&bJoke restart command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n`));
   }
 }
