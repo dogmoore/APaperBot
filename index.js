@@ -3,7 +3,6 @@ const Discord = require('discord.js');
 const { token } = require('./token.json');
 const { dashboardtoken } = require('./dashboard.json');
 const client = new Discord.Client();
-const botdash = require('botdash.pro');
 const { Console } = require('console');
 const Logger = require('leekslazylogger');
 const log = new Logger;
@@ -12,20 +11,17 @@ var eventLoad;
 var replyLoad;
 client.commands = new Discord.Collection();
 
-var dashboard = "";
-dashboard = new botdash.APIclient(dashboardtoken);
-
 let a = 1
 fs.readdir("./events/", (err, files) => {
     if (err) return console.error(err);
     files.forEach(file => {
         const event = require(`./events/${file}`);
         let eventName = file.split(".")[0];
-        log.console(log.format(`&a${a}: Attempting to load the event '&!1$${eventName}&!0'`));
+        log.console(log.format(`&a${a}: Attempting to load the event '&5${eventName}&a'`));
         a = a + 1;
         client.on(eventName, event.bind(null, client));
     });
-    log.console(log.format('&aSuccessfully loaded all events.'));
+    log.console(log.format('&6Successfully loaded all events.'));
     eventLoad = 'All good';
 });
 
@@ -38,11 +34,11 @@ fs.readdir("./commands/", (err, files) => {
     };
     jsfile.forEach((f, i) => {
         let props = require(`./commands/${f}`)
-        log.console(log.format(`&a${a}: Attempting to load the command '&!1${props.name}&!0'`));
+        log.console(log.format(`&a${a}: Attempting to load the command '&5${props.name}&a'`));
         client.commands.set(props.name, props);
         a = a + 1;
     });
-    log.console(log.format("&aSuccessfully loaded all commands."))
+    log.console(log.format("&6Successfully loaded all commands."))
     cmd = 'All good';
 });
 
@@ -51,11 +47,11 @@ fs.readdir("./replies/", (err, files) => {
     files.forEach(file => {
         const replies = require(`./replies/${file}`);
         let eventName = file.split(".")[0];
-        log.console(log.format(`&a${a}: Attempting to load the event '&!1${eventName}&!0'`));
+        log.console(log.format(`&a${a}: Attempting to load the event '&5${eventName}&a'`));
         a = a + 1;
         client.on("message", replies.bind(null, client));
     });
-    log.console(log.format("&aSuccessfully loaded all replies"));
+    log.console(log.format("&6Successfully loaded all replies"));
     replyLoad = "All good";
 });
 
