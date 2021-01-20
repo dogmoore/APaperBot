@@ -43,7 +43,7 @@ module.exports = {
                 if (message.author === GuildOwner) {
                     message.channel.send('Ask dogmoore to add your userID to the permissions file if you wish access Admin commands');
                 }
-                log.console(log.format(&b`Help command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n`));
+                log.console(log.format(`&bHelp command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n`));
                 message.channel.send(Help);
             }
         }

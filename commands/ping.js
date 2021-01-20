@@ -2,10 +2,11 @@ module.exports = {
   name: 'ping',
   description: 'ping!',
   async execute(client, message, args) {
+    const Logger = require('leekslazylogger');
+    const log = new Logger;
     try {
       const Discord = require('discord.js');
-      const Logger = require('leekslazylogger');
-      const log = new Logger;
+
       const client = new Discord.Client();
       const m = await message.channel.send(':loading: **Calculating...**');
       m.edit("...")
