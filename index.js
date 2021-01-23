@@ -11,17 +11,29 @@ const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
+const { version } = require('./config.json');
+const { SuperUserList } = require('./permissions.json');
+
+
 var commandLoad;
 var eventLoad;
 var replyLoad;
+
+
 client.commands = new Discord.Collection();
 
+
+
 function consoleCommands() {
+  let help = '';
   rl.question('>>>$', (i) => {
     let x = i.toLowerCase();
+    let args = x.slice().trim().split(' ');
     if(x.startsWith('say')) {
-      let args = x.slice().trim().split(' ');
-      //message.channel.send(say);
+      let channelID = args[1];
+      let msg = args.shift(2).toString();
+      client.channels.cache.get(channelID).send(msg);
+      log.console(args);
       consoleCommands();
     }
     else if(x.startsWith('shutdown')) {
@@ -38,7 +50,33 @@ function consoleCommands() {
       consoleCommands();
     }
     else if(x.startsWith('help')) {
-      log.console(log.format('&aVIA CONSOLE\n\n&bConsole Help Commands\nSay [&fCHANNEL ID&b] [&fMESSAGE&b]\nShutdown\nRestart'));
+      log.console(log.format('&aVIA CONSOLE\n&bConsole Help Commands\nSay [&fCHANNEL ID&b] [&fMESSAGE&b]\nShutdown\nRestart'));
+      consoleCommands();
+    }
+    else if(x.startsWith('version')) {
+      log.console(log.format(`&bCurrent version is [${version}]`));
+      consoleCommands();
+    }
+    else if(x.startsWith('user')) {
+      if(args[1] === 'superuser') {
+        log.console(log.format(`&bCurrent Super-Users are: ${SuperUserList}`));
+        consoleCommands();
+      }
+      else if(args[1] === 'count') {
+        log.console(log.format(`&bTotal members in ${taggedGuild}: ${taggedUsers}`));
+        consoleCommands();
+      }
+      else if(args[1] === 'total') {
+        log.console(log.format(`&bTotal cached users: ${cachedUsers}\nTotal guilds: ${cachedGuilds}`));
+        consoleCommands();
+      }
+    }
+    else if(x.startsWith('server')) {
+      log.console(log.format(`&bTotal Guilds: ${cachedGuilds}`));
+      consoleCommands();
+    }
+    else if(x.startsWith('status')) {
+      log.console(log.format(`&bEvent load: [${eventLoad}]\nCommand load: [${commandLoad}]\nReply load: [${replyLoad}]`));
       consoleCommands();
     }
     else {
@@ -46,6 +84,8 @@ function consoleCommands() {
     }
   })
 }
+
+
 
 function fileCheck() {
   let a = 1
@@ -60,7 +100,6 @@ function fileCheck() {
     });
     log.console(log.format('&6Successfully loaded all events.'));
     eventLoad = 'All good';
-
   });
 
   fs.readdir("./commands/", (err, files) => {
@@ -78,7 +117,6 @@ function fileCheck() {
     });
     log.console(log.format("&6Successfully loaded all commands."))
     cmd = 'All good';
-
   });
 
   fs.readdir("./replies/", (err, files) => {
@@ -92,11 +130,12 @@ function fileCheck() {
     });
     log.console(log.format("&6Successfully loaded all replies"));
     replyLoad = "All good";
-
   });
 }
-fileCheck();
 
+
+
+fileCheck();
 consoleCommands();
 
 client.login(token);

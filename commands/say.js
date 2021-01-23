@@ -10,13 +10,13 @@ module.exports = {
         try {
             if (message.author.id === BotOwner) {
                 if (!args.length) {
-                    message.delete();
+                    setTimeOut(message.delete(), 50);
                     return;
                 }
                 else {
-                    let sendMessage = message.content.substring(4);
+                    let sendMessage = message.content.substring(5);
                     message.channel.send(`${sendMessage}`);
-                    message.delete();
+                    setTimeOut(message.delete(), 50);
                     success = `success`;
                 }
             }
