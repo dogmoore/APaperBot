@@ -6,7 +6,7 @@ module.exports = {
     const Logger = require('leekslazylogger');
     const log = new Logger;
 
-    let x = 12;
+    let x = 14;
     function getRandomInt(max) {
       return Math.floor(Math.random() * Math.floor(max) + 0);
     }
@@ -37,7 +37,7 @@ module.exports = {
         message.reply('used the forbidden bathbomb');
       }
       else if (getRandomInt(x) == 8) {
-        message.reply('went to meet they\'re savior, Satan');
+        message.reply('went to meet their savior, Satan');
       }
       else if (getRandomInt(x) == 9) {
         message.reply('insulted Fatal');
@@ -46,10 +46,13 @@ module.exports = {
         message.reply('tried to spill government secrets');
       }
       else if (getRandomInt(x) == 11) {
-        message.reply('didn\'t try to commit suicide in they\'re cell after running a pedo ring for the top 1%');
+        message.reply('didn\'t commit suicide in their cell after running a pedo ring for the top 1%');
       }
       else if (getRandomInt(x) == 12) {
         message.reply('got tickled by Jelly');
+      }
+      else if(getRandomInt(x) == 13) {
+        message.reply('Fell out of the world');
       }
       else {
         suicide();

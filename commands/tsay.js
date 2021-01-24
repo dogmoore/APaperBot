@@ -1,23 +1,20 @@
 module.exports = {
-    name: 'say',
+    name: 'tsay',
     description: 'Makes the bot say something',
     execute(client, message, args) {
         let dog = '376857933067321366';
-
         const Discord = require('discord.js');
         let  success = ` `;
         if (message.author.id === dog) {
-
             if (!args.length) {
-                message.delete();
+                setTimeOUt(message.delete(), 50);
+                success = 'length error, did not send';
                 return;
             }
             else {
-                let sendMessage = message.content.substring(4);
-
+                let sendMessage = message.content.substring(6);
                 message.channel.send(`${sendMessage}`);
-                message.delete();
-
+                setTimeOut(message.delete(), 50);
                 success = `success`;
             }
         }
@@ -33,6 +30,6 @@ module.exports = {
             message.channel.send(permissionError);
             success = `failure`;
         }
-        console.log(`Say command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n${success}\n\n`);
+            log.console(log.format(`&bTrue say command used in server: ${message.guild.name}\nIssued by: ${message.author.tag}\n${success}\n`));
     }
 }
