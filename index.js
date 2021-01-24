@@ -50,7 +50,7 @@ function consoleCommands() {
       consoleCommands();
     }
     else if(x.startsWith('help')) {
-      log.console(log.format('&aVIA CONSOLE\n&bConsole Help Commands\nSay [&fCHANNEL ID&b] [&fMESSAGE&b]\nShutdown\nRestart'));
+      log.console(log.format('&aVIA CONSOLE\n&bConsole Help Commands\nSay [&fCHANNEL ID&b] [&fMESSAGE&b]\nShutdown\nRestart\nuser [&fsuperuser &b/&f count &b/&f total&b]\nserver\nstatus'));
       consoleCommands();
     }
     else if(x.startsWith('version')) {
@@ -76,7 +76,7 @@ function consoleCommands() {
       consoleCommands();
     }
     else if(x.startsWith('status')) {
-      log.console(log.format(`&bEvent load: [${eventLoad}]\nCommand load: [${commandLoad}]\nReply load: [${replyLoad}]`));
+      log.console(log.format(`&b\nEvent load: [${eventLoad}]\nCommand load: [${commandLoad}]\nReply load: [${replyLoad}]`));
       consoleCommands();
     }
     else {
@@ -106,7 +106,7 @@ function fileCheck() {
     let jsfile = files.filter(f => f.split(".").pop() === "js")
     if (jsfile.length <= 0) {
       log.console(log.format("&cCouldn't find commands!"));
-      cmd = 'Something went wrong';
+      commandLoad = 'Something went wrong';
       return;
     };
     jsfile.forEach((f, i) => {
@@ -116,7 +116,7 @@ function fileCheck() {
       a = a + 1;
     });
     log.console(log.format("&6Successfully loaded all commands."))
-    cmd = 'All good';
+    commandLoad = 'All good';
   });
 
   fs.readdir("./replies/", (err, files) => {
