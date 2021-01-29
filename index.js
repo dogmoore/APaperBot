@@ -18,6 +18,10 @@ const { SuperUserList } = require('./permissions.json');
 var commandLoad;
 var eventLoad;
 var replyLoad;
+var taggedGuild;
+var taggedUsers;
+var cachedGuilds;
+var cachedUsers;
 
 
 client.commands = new Discord.Collection();
@@ -25,8 +29,8 @@ client.commands = new Discord.Collection();
 
 
 function consoleCommands() {
-  let help = '';
   rl.question('>>>$', (i) => {
+    //log.console(log.format(`&f>>>$&b ${i}`));
     let x = i.toLowerCase();
     let args = x.slice().trim().split(' ');
     if(x.startsWith('say')) {
@@ -76,7 +80,7 @@ function consoleCommands() {
       consoleCommands();
     }
     else if(x.startsWith('status')) {
-      log.console(log.format(`&b\nEvent load: [${eventLoad}]\nCommand load: [${commandLoad}]\nReply load: [${replyLoad}]`));
+      log.console(log.format(`&bEvent load: [${eventLoad}]\nCommand load: [${commandLoad}]\nReply load: [${replyLoad}]`));
       consoleCommands();
     }
     else {

@@ -9,7 +9,7 @@ module.exports = {
     let success = ``;
     try {
       if (!args.length) {
-        setTimeOut(message.delete(), 50);
+        setTimeout(message.delete(), 50);
         const lengthError = new Discord.MessageEmbed()
         .setColor('#c70606')
         .setTitle('Length Error')
@@ -26,7 +26,7 @@ module.exports = {
         let sendMessage = message.content.substring(5);
         message.reply(`wanted me to say:`);
         message.channel.send(`${sendMessage}`);
-        setTimeOut(message.delete(), 3000);
+        setTimeout(message.delete(), 3000);
         success = `success`;
       }
       // else {
