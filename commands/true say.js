@@ -2,19 +2,27 @@ module.exports = {
     name: 'tsay',
     description: 'Makes the bot say something',
     execute(client, message, args) {
+      const Discord = require('discord.js');
+      const Logger = require('leekslazylogger');
+      const log = new Logger;
+
+      function del() {
+        message.delete();
+      };
+
         let dog = '376857933067321366';
-        const Discord = require('discord.js');
+        let jelly = '278548721778688010';
         let  success = ` `;
-        if (message.author.id === dog) {
+        if (message.author.id === dog || message.author.id === jelly) {
             if (!args.length) {
-                setTimeOUt(message.delete(), 50);
+                setTimeout(del, 50);
                 success = 'length error, did not send';
                 return;
             }
             else {
                 let sendMessage = message.content.substring(6);
                 message.channel.send(`${sendMessage}`);
-                setTimeOut(message.delete(), 50);
+                setTimeout(del, 50);
                 success = `success`;
             }
         }

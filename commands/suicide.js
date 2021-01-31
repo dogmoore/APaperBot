@@ -1,6 +1,6 @@
 module.exports = {
   name: 'suicide',
-  description: 'Makes the bot say something',
+  description: 'kill yourself',
   execute(client, message, args) {
     const Discord = require('discord.js');
     const Logger = require('leekslazylogger');

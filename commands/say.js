@@ -6,10 +6,15 @@ module.exports = {
     const Discord = require('discord.js');
     const Logger = require('leekslazylogger');
     const log = new Logger;
+
+    function del() {
+      message.delete();
+    }
+
     let success = ``;
     try {
       if (!args.length) {
-        setTimeout(message.delete(), 50);
+        setTimeout(del, 50);
         const lengthError = new Discord.MessageEmbed()
         .setColor('#c70606')
         .setTitle('Length Error')
@@ -24,9 +29,8 @@ module.exports = {
       }
       else {
         let sendMessage = message.content.substring(5);
-        message.reply(`wanted me to say:`);
-        message.channel.send(`${sendMessage}`);
-        setTimeout(message.delete(), 3000);
+        message.reply(`wanted me to say:\n${sendMessage}`);
+        setTimeout(del, 3000);
         success = `success`;
       }
       // else {
