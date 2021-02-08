@@ -6,13 +6,14 @@ module.exports = (client, message) => {
   try {
     if(message.author.bot) return;
     if(message.content.startsWith(`${prefix}`)) return;
-    if (message.content.includes('waffle') || message.content.includes('WAFFLE')) {
+    let msg = message.content.toLowerCase();
+    if (msg.includes('waffle')) {
       message.channel.send('WAFFIE!');
       log.console(log.format('&2waffle was mentioned\n'));
     }
   }
   catch (err) {
-    console.error(err.red);
+    log.error(log.format(`&c${err}`));
   }
   finally {
 
