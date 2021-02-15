@@ -4,11 +4,16 @@ module.exports = (client, message) => {
   const log = new Logger;
   const { prefix } = require('../config.json');
   try {
-    if (message.author.bot) return;
-    if (message.content.startsWith(`${prefix}`)) return;
-    if (message.content.includes('jellyfish') || message.content.includes('Jellyfish')) {
-      message.channel.send('go on and bring that smelly bot here, I\'ll fight it and win!\nFUCK JELLYFISH');
-      log.console(log.format('&aprefixless command \'Jellyfish\'was issued\n'));
+    let jellyfish = '799880448653525012';
+    if (message.author.id === jellyfish) {
+      message.reply('Fuck you');
+    }
+    else if (message.author.bot) return;
+    else if (message.content.startsWith(`${prefix}`)) return;
+    let msg = message.content.toLowerCase();
+    if (msg.includes('jellyfish')) {
+      message.channel.send('FUCK JELLYFISH');
+      log.console(log.format('&aprefixless command \'Jellyfish\' was issued\n'));
     }
   }
   catch (err) {

@@ -9,7 +9,7 @@ module.exports = (client, message) => {
     let msg = message.content.toLowerCase();
     if (msg.includes('waffle')) {
       message.channel.send('WAFFIE!');
-      log.console(log.format('&2waffle was mentioned\n'));
+      log.console(log.format('&aprefixless command \'Waffle\' was issued\n'));
     }
   }
   catch (err) {

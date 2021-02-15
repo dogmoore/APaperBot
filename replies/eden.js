@@ -4,7 +4,8 @@ module.exports = (client, message) => {
   const log = new Logger;
   try {
     if (message.author.id === '669436598886072320') {
-      if (message.content.includes('destiny') || message.content.includes('Destiny')) {
+      let msg = message.content.toLowerCase();
+      if (msg.includes('destiny')) {
         let x = 3;
         function getRandomInt(max) {
           return Math.floor(Math.random() * Math.floor(max) + 0);
