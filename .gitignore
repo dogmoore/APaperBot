@@ -340,5 +340,6 @@ ASALocalRun/
 healthchecksdb
 
 token.json
+config.json
 valDayEdy.js
 logs
