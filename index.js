@@ -12,8 +12,8 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 const { version } = require('./config.json');
-const { SuperUserList } = require('./permissions.json');
 
+const { SuperUserList } = require('./permissions.json');
 
 var commandLoad;
 var eventLoad;
@@ -25,7 +25,6 @@ var cachedUsers;
 
 
 client.commands = new Discord.Collection();
-
 
 
 function consoleCommands() {
@@ -90,7 +89,6 @@ function consoleCommands() {
 }
 
 
-
 function fileCheck() {
   let a = 1
   fs.readdir("./events/", (err, files) => {
@@ -137,7 +135,41 @@ function fileCheck() {
   });
 }
 
+//TWITCH INTERGRATION START
+const { twitch } = require('./integrations.json');
+if (twitch === true) {
+  console.log(log.format(`&cTwitch integration enabled`))
+  try {
+    const { OATH } = require('./config.json');
+    const TwitchBot = require('twitch-bot');
 
+    const Bot = new TwitchBot({
+      username: 'APaperBot',
+      oauth: 'oauth:OAUTH',
+      channels: ['twitch']
+    })
+
+    Bot.on('join', channel => {
+      console.log(log.format(`&cJoined channel: ${channel}`))
+    })
+
+    Bot.on('message', chatter => {
+      if(chatter.message === '!test') {
+        Bot.say('Command executed!');
+        console.log(log.format('&btest command used'))
+      }})
+    }
+    catch(err) {
+      console.log(log.format(`&cTwitch intergration errored with '${err}'`));
+    }
+    finally {
+
+    }
+  }
+  else if (twitch === false) {
+    console.log(log.format(`&cTwitch integration disabled`));
+  }
+//TWITCH INTERGRATION END
 
 fileCheck();
 consoleCommands();
