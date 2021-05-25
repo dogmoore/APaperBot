@@ -137,38 +137,55 @@ function fileCheck() {
 
 //TWITCH INTERGRATION START
 const { twitch } = require('./integrations.json');
-if (twitch === true) {
-  console.log(log.format(`&cTwitch integration enabled`))
+//if (twitch === true) {
+  log.console(log.format(`&cTwitch integration enabled`));
   try {
-    const { OATH } = require('./config.json');
-    const TwitchBot = require('twitch-bot');
+    const tmi = require('tmi.js');
+    const { OAUTH } = require('./config.json');
+    const opts = {
+      options: {
+        debug: true,
+      },
+      connection: {
+        cluster: 'aws',
+        reconnect: true,
+      },
+      identity: {
+        username: 'apaperbot',
+        password: OAUTH,
+      },
+      channels: ['apaperdog'],
+    };
+    const TwitchClient = new tmi.client(opts);
 
-    const Bot = new TwitchBot({
-      username: 'APaperBot',
-      oauth: 'oauth:OAUTH',
-      channels: ['twitch']
-    })
+    TwitchClient.connect();
 
-    Bot.on('join', channel => {
-      console.log(log.format(`&cJoined channel: ${channel}`))
-    })
+    TwitchClient.on('connected', (address, port) => {
+      log.console(log.format(`&cAPaperBot has connected to Twitch using ${address} on port ${port}!`))
+      //TwitchClient.action('apaperdog', 'APaperBot is now online!');
+    });
 
-    Bot.on('message', chatter => {
-      if(chatter.message === '!test') {
-        Bot.say('Command executed!');
-        console.log(log.format('&btest command used'))
-      }})
-    }
-    catch(err) {
-      console.log(log.format(`&cTwitch intergration errored with '${err}'`));
-    }
-    finally {
+    TwitchClient.on('chat', (channel, user, message, self) => {
+      if (self) return;
 
-    }
-  }
-  else if (twitch === false) {
-    console.log(log.format(`&cTwitch integration disabled`));
-  }
+      const command = message.trim();
+
+      if (message.content.startsWith('!test')) {
+        TwitchClient.say('Command Test worked!');
+      };
+    });
+
+}
+catch(err) {
+
+}
+finally {
+
+}
+//}
+//else if (twitch === false) {
+//  console.log(log.format(`&cTwitch integration disabled`));
+//}
 //TWITCH INTERGRATION END
 
 fileCheck();
