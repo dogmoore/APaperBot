@@ -5,6 +5,7 @@ module.exports = {
     const { BotOwner } = require('../permissions.json');
     const Discord = require('discord.js');
     const Logger = require('leekslazylogger');
+    const { owner } = require('../config.json');
     const log = new Logger;
 
     function del() {
@@ -22,7 +23,7 @@ module.exports = {
         .setThumbnail('https://i.imgur.com/8lRaG6L.png')
         .addField('You need to add a message if you want me to say it', '\u200b', false)
         .setTimestamp()
-        .setFooter('APaperBot Created by dogmoore#0001');
+        .setFooter(`APaperBot Created by ${owner}`);
         message.channel.send(lengthError);
         success = 'failure';
         return;

@@ -5,6 +5,7 @@ module.exports = {
       const Discord = require('discord.js');
       const Logger = require('leekslazylogger');
       const log = new Logger;
+      const { owner } = require('../config.json');
 
       function del() {
         message.delete();
@@ -32,9 +33,9 @@ module.exports = {
                 .setTitle('Permission Error')
                 .setURL('https://bit.ly/2JMYqCD')
                 .setThumbnail('https://i.imgur.com/8lRaG6L.png')
-                .addField('You do not have permissions for this command', 'Currently only the bot owner `dogmoore#0001` has access', false)
+                .addField('You do not have permissions for this command', `Currently only the bot owner \`${owner}\` has access`, false)
                 .setTimestamp()
-                .setFooter('APaperBot Created by dogmoore#0001');
+                .setFooter(`APaperBot Created by ${owner}`);
             message.channel.send(permissionError);
             success = `failure`;
         }

@@ -6,6 +6,7 @@ module.exports = {
         const Logger = require('leekslazylogger');
         const log = new Logger;
         const Discord = require('discord.js');
+        const { owner } = require('../config.json');
         try {
             const superuser = new Discord.MessageEmbed()
                 .setColor('#0339fc')
@@ -14,7 +15,7 @@ module.exports = {
                 .setThumbnail('https://i.imgur.com/8lRaG6L.png')
                 .addField('\u200B', `${SuperUserList}`, false)
                 .setTimestamp()
-                .setFooter('APaperBot Created by dogmoore#0001');
+                .setFooter(`APaperBot Created by ${owner}`);
             message.channel.send(superuser);
         }
         catch (err) {

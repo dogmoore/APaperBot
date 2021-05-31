@@ -6,7 +6,7 @@ module.exports = (client, message) => {
   try {
     let jellyfish = '799880448653525012';
     if (message.author.id === jellyfish) {
-      message.reply('Fuck you');
+    //  message.reply('Fuck you');
     }
     else if (message.author.bot) return;
     else if (message.content.startsWith(`${prefix}`)) return;

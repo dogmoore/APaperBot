@@ -6,6 +6,7 @@ module.exports = {
     const Member = message.mentions.members.first();
     const Logger = require('leekslazylogger');
     const log = new Logger;
+    const { owner } = require('../config.json');
 
     const argsError = new Discord.MessageEmbed()
     .setColor('#c70606')
@@ -14,16 +15,16 @@ module.exports = {
     .setThumbnail('https://i.imgur.com/8lRaG6L.png')
     .addField('If you want to ban someone, ping them!', '\u200B', true)
     .setTimestamp()
-    .setFooter('APaperBot Created by dogmoore#0001');
+    .setFooter(`APaperBot Created by ${owner}`);
 
     const permissionError = new Discord.MessageEmbed()
     .setColor('#c70606')
     .setTitle('Permission Error')
     .setURL('https://bit.ly/2JMYqCD')
     .setThumbnail('https://i.imgur.com/8lRaG6L.png')
-    .addField('You do not have permissions for this command', 'If this is a mistake please let dogmoore#0001 know', false)
+    .addField(`You do not have permissions for this command', 'If this is a mistake please let ${owner} know`, false)
     .setTimestamp()
-    .setFooter('APaperBot Created by dogmoore#0001');
+    .setFooter(`APaperBot Created by ${owner}`);
 
     const ban = new Discord.MessageEmbed()
     .setColor('#0339fc')
@@ -34,7 +35,7 @@ module.exports = {
       { name: `User ${Member} was ban from ${message.guild.name}!`, value: '\u200B' },
     )
     .setTimestamp()
-    .setFooter('APaperBot Created by dogmoore#0001');
+    .setFooter(`APaperBot Created by ${owner}`);
 
     try {
       if (!message.member.hasPermission('BAN_MEMBERS') || Member == '376857933067321366') return message.channel.send(permissionError);

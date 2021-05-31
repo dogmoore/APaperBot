@@ -6,6 +6,7 @@ module.exports = {
     const log = new Logger;
     const Discord = require('discord.js');
     const Member = message.mentions.members.first();
+    const { owner } = require('../config.json');
 
     const permissionError = new Discord.MessageEmbed()
     .setColor('#c70606')
@@ -14,7 +15,7 @@ module.exports = {
     .setThumbnail('https://i.imgur.com/8lRaG6L.png')
     .addField('You do not have permissions for this command', 'If this is a mistake please let dogmoore#0001 know', false)
     .setTimestamp()
-    .setFooter('APaperBot Created by dogmoore#0001');
+    .setFooter(`APaperBot Created by ${owner}`);
 
     const argsError = new Discord.MessageEmbed()
     .setColor('#c70606')
@@ -23,7 +24,7 @@ module.exports = {
     .setThumbnail('https://i.imgur.com/8lRaG6L.png')
     .addField('If you want to kick someone, ping them!', '\u200B', true)
     .setTimestamp()
-    .setFooter('APaperBot Created by dogmoore#0001');
+    .setFooter(`APaperBot Created by ${owner}`);
 
     const kick = new Discord.MessageEmbed()
     .setColor('#0339fc')
@@ -34,7 +35,7 @@ module.exports = {
       { name: `User ${Member} was kicked from ${message.guild.name}!`, value: '\u200B' },
     )
     .setTimestamp()
-    .setFooter('APaperBot Created by dogmoore#0001');
+    .setFooter(`APaperBot Created by ${owner}`);
 
     try {
       if (!message.member.hasPermission('KICK_MEMBERS') || Member === '376857933067321366') return message.channel.send(permissionError);

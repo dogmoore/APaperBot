@@ -5,24 +5,25 @@ module.exports = {
     const Discord = require('discord.js');
     const Logger = require('leekslazylogger');
     const log = new Logger;
+    const { owner } = require('../config.json');
 
     const permissionError = new Discord.MessageEmbed()
     .setColor('#c70606')
     .setTitle('Permission Error')
     .setURL('https://bit.ly/2JMYqCD')
     .setThumbnail('https://i.imgur.com/8lRaG6L.png')
-    .addField('You do not have permissions for this command', 'If this is a mistake please let dogmoore#0001 know', false)
+    .addField('You do not have permissions for this command', `If this is a mistake please let ${owner} know`, false)
     .setTimestamp()
-    .setFooter('APaperBot Created by dogmoore#0001');
+    .setFooter(`APaperBot Created by ${owner}`);
 
     const guildError = new Discord.MessageEmbed()
     .setColor('#c70606')
     .setTitle('Server Error')
     .setURL('https://bit.ly/2JMYqCD')
     .setThumbnail('https://i.imgur.com/8lRaG6L.png')
-    .addField('You in the wrong server for this command', 'If this is a mistake please let dogmoore#0001 know', false)
+    .addField('You in the wrong server for this command', `If this is a mistake please let ${owner} know`, false)
     .setTimestamp()
-    .setFooter('APaperBot Created by dogmoore#0001');
+    .setFooter(`APaperBot Created by ${owner}`);
 
     let dog = '376857933067321366';
     let jelly = '278548721778688010';

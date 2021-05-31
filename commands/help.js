@@ -8,6 +8,7 @@ module.exports = {
         const log = new Logger;
         const GuildOwner = message.guild.owner;
         const { prefix } = require('../config.json');
+        const { owner } = require('../config.json');
         try {
             const Help = new Discord.MessageEmbed()
                 .setColor('#0339fc')
@@ -24,7 +25,7 @@ module.exports = {
                     { name: `${prefix}superuser`, value: 'Lists the current super-users' },
                 )
                 .setTimestamp()
-                .setFooter('APaperBot Created by dogmoore#0001');
+                .setFooter(`APaperBot Created by ${owner}`);
             if (Admin.includes(message.author.id)) {
                     Help.setColor('#0339fc')
                     .setTitle('Bot commands')
@@ -35,7 +36,7 @@ module.exports = {
                         { name: `${prefix}shutdown`, value: 'Turns off the bot *SUPER-USERS ONLY*' },
                     )
                     .setTimestamp()
-                    .setFooter('APaperBot Created by dogmoore#0001');
+                    .setFooter('APaperBot Created by ${owner}');
                 log.console(log.format(`&b&lAdmin help command used in server: ${message.guild.name}\nIssued by owner: ${message.author.tag}\n`));
                 message.channel.send(Help);
             }

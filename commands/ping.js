@@ -6,6 +6,7 @@ module.exports = {
     const log = new Logger;
     try {
       const Discord = require('discord.js');
+      const { owner } = require('../config.json');
 
       const client = new Discord.Client();
       const m = await message.channel.send(':loading: **Calculating...**');
@@ -21,7 +22,7 @@ module.exports = {
         .addField("Bot Latency", `${m.createdTimestamp - message.createdTimestamp}ms`, true)
         .addField("API Latency", `Not Available`, true)
         .setTimestamp()
-        .setFooter('APaperBot Created by dogmoore#0001');
+        .setFooter(`APaperBot Created by ${owner}`);
         message.channel.send(embed2)
       }
       else {
@@ -34,7 +35,7 @@ module.exports = {
         .addField("Bot Latency", `${m.createdTimestamp - message.createdTimestamp}ms`, true)
         .addField("API Latency", `${Math.round(message.client.ping)}ms`, true)
         .setTimestamp()
-        .setFooter('APaperBot Created by dogmoore#0001');
+        .setFooter(`APaperBot Created by ${owner}`);
         message.channel.send(embed)
       }
     }

@@ -12,6 +12,7 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 const { version } = require('./config.json');
+const { owner } = require('./config.json')
 
 const { SuperUserList } = require('./permissions.json');
 
@@ -136,12 +137,26 @@ function fileCheck() {
 }
 
 //TWITCH INTERGRATION START
-const { twitch } = require('./integrations.json');
-//if (twitch === true) {
-  log.console(log.format(`&cTwitch integration enabled`));
+/*client.on('ready', () => {
+  const channelLog = client.channels.cache.find(channel => channel.id === '847161067938512896');
+})
+*/
+// const shuttingdown = new Discord.MessageEmbed()
+// .setColor('#6441a5')
+// .setTitle('Twitch')
+// .setURL('https://bit.ly/2JMYqCD')
+// .setThumbnail('https://i.imgur.com/cX5K9oZ.png')
+// .addField('Offline', `APaperBot disconnected from twitch`)
+// .setTimestamp()
+// .setFooter(`APaperBot Created by ${owner}`);
+
+const { twitch } = require('./config.json');
+if (twitch === true) {
+  log.console(log.format(`&5&lTwitch integration enabled`));
   try {
     const tmi = require('tmi.js');
     const { OAUTH } = require('./config.json');
+    const { TwitchChannel } = require('./config.json');
     const opts = {
       options: {
         debug: true,
@@ -149,43 +164,102 @@ const { twitch } = require('./integrations.json');
       connection: {
         cluster: 'aws',
         reconnect: true,
+        secure: true,
       },
       identity: {
         username: 'apaperbot',
         password: OAUTH,
       },
-      channels: ['apaperdog'],
+      channels: [`${TwitchChannel}`],
     };
     const TwitchClient = new tmi.client(opts);
 
     TwitchClient.connect();
 
     TwitchClient.on('connected', (address, port) => {
-      log.console(log.format(`&cAPaperBot has connected to Twitch using ${address} on port ${port}!`))
+      log.console(log.format(`&5&lAPaperBot has connected to Twitch using ${address} on port ${port}!`))
       //TwitchClient.action('apaperdog', 'APaperBot is now online!');
+      client.on('ready', () => {
+        const TwitchLog = new Discord.MessageEmbed()
+        .setColor('#6441a5')
+        .setTitle('Twitch')
+        .setURL('https://bit.ly/2JMYqCD')
+        .setThumbnail('https://i.imgur.com/cX5K9oZ.png')
+        .addField('Online', `APaperBot connected to twitch using address ${address} with port ${port}! Running on channel \`${TwitchChannel}\`.`)
+        .setTimestamp()
+        .setFooter(`APaperBot Created by ${owner}`);
+        const channelLog = client.channels.cache.find(channel => channel.id === '847161067938512896');
+        channelLog.send(TwitchLog);
+      });
     });
+
+    TwitchClient.on('reconnect', (address, port) => {
+      client.on('ready', () => {
+        const TwitchRecon = new Discord.MessageEmbed()
+        .setColor('#6441a5')
+        .setTitle('Twitch')
+        .setURL('https://bit.ly/2JMYqCD')
+        .setThumbnail('https://i.imgur.com/cX5K9oZ.png')
+        .addField('Online', `APaperBot reconnected to twitch using address ${address} with port ${port}! Running on channel \`${TwitchChannel}\`.`)
+        .setTimestamp()
+        .setFooter(`APaperBot Created by ${owner}`);
+        const channelLog = client.channels.cache.find(channel => channel.id === '847161067938512896');
+        channelLog.send(TwitchRecon);
+      });
+    });
+
+    // TwitchClient.on('disconnect', () => {
+    //   channelLog.send(shuttingdown);
+    // })
 
     TwitchClient.on('chat', (channel, user, message, self) => {
       if (self) return;
 
       const command = message.trim();
+      const chat = message.toLowerCase();
 
-      if (message.content.startsWith('!test')) {
-        TwitchClient.say('Command Test worked!');
-      };
+      if (command === '!test') {
+        TwitchClient.say(TwitchChannel, 'Command Test worked!');
+      }
+      else if (chat === 'hi' || chat === 'hello' || chat === 'hallo' || chat === 'hey') {
+        TwitchClient.say(TwitchChannel, `Hello!!`)
+      }
+      else if (command === '!shutdown') {
+        TwitchClient.say(TwitchChannel, 'Now shutting down APaperBot on Discord and Twitch. One moment please...');
+        client.on('ready', () => {
+          const shuttingdown = new Discord.MessageEmbed()
+          .setColor('#6441a5')
+          .setTitle('Twitch')
+          .setURL('https://bit.ly/2JMYqCD')
+          .setThumbnail('https://i.imgur.com/cX5K9oZ.png')
+          .addField('Offline', `APaperBot disconnected from twitch`)
+          .setTimestamp()
+          .setFooter(`APaperBot Created by ${owner}`);
+          const channelLog = client.channels.cache.find(channel => channel.id === '847161067938512896');
+          channelLog.send(shuttingdown);
+        });
+        setTimeout(() => { process.exit(); }, 4000);
+      }
+      else if (command === '!online') {
+        let uptimeraw = client.uptime;
+        let uptime = ((uptimeraw / 1000)/60).toFixed(2);
+        TwitchClient.say(TwitchChannel, `I've been online for ${uptime} minutes!`);
+      }
     });
 
-}
-catch(err) {
+  }
+  catch(err) {
+    log.console(log.format(`&c${err}`))
+  }
+  finally {
 
+  }
 }
-finally {
+else if (twitch === false) {
+  console.log(log.format(`&5&lTwitch integration disabled`));
+}
 
-}
-//}
-//else if (twitch === false) {
-//  console.log(log.format(`&cTwitch integration disabled`));
-//}
+
 //TWITCH INTERGRATION END
 
 fileCheck();
