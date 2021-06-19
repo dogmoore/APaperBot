@@ -1,5 +1,8 @@
 {
   "prefix": "$$",
-  "version": "69.42.0"
-  "OATH": "kkblo1ekf9xm4pn9bim1foarm4du2b"
+  "version": "69.42.0",
+
+  "owner": "dogmoore#3261",
+
+  "TwitchChannel": "apaperdog",
 }

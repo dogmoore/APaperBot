@@ -5,7 +5,7 @@ module.exports = {
     try {
       const Logger = require('leekslazylogger');
       const log = new Logger;
-      const { BotOwner } = require('../permissions.json');
+      // const { BotOwner } = require('../permissions.json');
       const Discord = require('discord.js');
       let aTag = message.mentions.users.first();
       const moment = require('moment');

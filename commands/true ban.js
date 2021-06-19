@@ -22,7 +22,7 @@ module.exports = {
     .setTitle('Permission Error')
     .setURL('https://bit.ly/2JMYqCD')
     .setThumbnail('https://i.imgur.com/8lRaG6L.png')
-    .addField(`You do not have permissions for this command', 'If this is a mistake please let ${owner} know`, false)
+    .addField(`You do not have permissions for this command`, `If this is a mistake please let ${owner} know`, false)
     .setTimestamp()
     .setFooter(`APaperBot Created by ${owner}`);
 

@@ -1,3 +1,4 @@
 {
-  "twitch": "true" 
+  "twitch": true,
+  "minecraft": true,
 }

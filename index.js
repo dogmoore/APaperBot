@@ -150,12 +150,12 @@ function fileCheck() {
 // .setTimestamp()
 // .setFooter(`APaperBot Created by ${owner}`);
 
-const { twitch } = require('./config.json');
+const { twitch } = require('./integrations.json');
 if (twitch === true) {
   log.console(log.format(`&5&lTwitch integration enabled`));
   try {
     const tmi = require('tmi.js');
-    const { OAUTH } = require('./config.json');
+    const { OAUTH } = require('./token.json');
     const { TwitchChannel } = require('./config.json');
     const opts = {
       options: {
@@ -189,7 +189,7 @@ if (twitch === true) {
         .setTimestamp()
         .setFooter(`APaperBot Created by ${owner}`);
         const channelLog = client.channels.cache.find(channel => channel.id === '847161067938512896');
-        channelLog.send(TwitchLog);
+        //channelLog.send(TwitchLog);
       });
     });
 
@@ -204,7 +204,7 @@ if (twitch === true) {
         .setTimestamp()
         .setFooter(`APaperBot Created by ${owner}`);
         const channelLog = client.channels.cache.find(channel => channel.id === '847161067938512896');
-        channelLog.send(TwitchRecon);
+        //channelLog.send(TwitchRecon);
       });
     });
 
@@ -224,22 +224,23 @@ if (twitch === true) {
       else if (chat === 'hi' || chat === 'hello' || chat === 'hallo' || chat === 'hey') {
         TwitchClient.say(TwitchChannel, `Hello!!`)
       }
-      else if (command === '!shutdown') {
-        TwitchClient.say(TwitchChannel, 'Now shutting down APaperBot on Discord and Twitch. One moment please...');
-        client.on('ready', () => {
-          const shuttingdown = new Discord.MessageEmbed()
-          .setColor('#6441a5')
-          .setTitle('Twitch')
-          .setURL('https://bit.ly/2JMYqCD')
-          .setThumbnail('https://i.imgur.com/cX5K9oZ.png')
-          .addField('Offline', `APaperBot disconnected from twitch`)
-          .setTimestamp()
-          .setFooter(`APaperBot Created by ${owner}`);
-          const channelLog = client.channels.cache.find(channel => channel.id === '847161067938512896');
-          channelLog.send(shuttingdown);
-        });
-        setTimeout(() => { process.exit(); }, 4000);
-      }
+      // else if (command === '!shutdown') {
+      //   TwitchClient.say(TwitchChannel, 'Now shutting down APaperBot on Discord and Twitch. One moment please...');
+      //   client.on('ready', () => {
+      //     console.log('is this working?'); //is not working
+      //     const shuttingdown = new Discord.MessageEmbed()
+      //     .setColor('#6441a5')
+      //     .setTitle('Twitch')
+      //     .setURL('https://bit.ly/2JMYqCD')
+      //     .setThumbnail('https://i.imgur.com/cX5K9oZ.png')
+      //     .addField('Offline', `APaperBot disconnected from twitch`)
+      //     .setTimestamp()
+      //     .setFooter(`APaperBot Created by ${owner}`);
+      //     const channelLog = client.channels.cache.find(channel => channel.id === '847161067938512896');
+      //     channelLog.send(shuttingdown);
+      //   });
+      //   setTimeout(() => { process.exit(); }, 4000);
+      // }
       else if (command === '!online') {
         let uptimeraw = client.uptime;
         let uptime = ((uptimeraw / 1000)/60).toFixed(2);
