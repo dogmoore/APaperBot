@@ -12,7 +12,7 @@ module.exports = (client, message) => {
     else if (message.content.startsWith(`${prefix}`)) return;
     let msg = message.content.toLowerCase();
     if (msg.includes('jellyfish')) {
-      message.channel.send('FUCK JELLYFISH');
+      //message.channel.send('FUCK JELLYFISH');
       log.console(log.format('&aprefixless command \'Jellyfish\' was issued\n'));
     }
   }

@@ -6,11 +6,11 @@ const client = new Discord.Client();
 const Logger = require('leekslazylogger');
 const log = new Logger;
 const eventEmitter = require('events');
-const readline = require('readline');
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
+// const readline = require('readline');
+// const rl = readline.createInterface({
+//   input: process.stdin,
+//   output: process.stdout
+// });
 const { version } = require('./config.json');
 const { owner } = require('./config.json')
 
@@ -28,66 +28,66 @@ var cachedUsers;
 client.commands = new Discord.Collection();
 
 
-function consoleCommands() {
-  rl.question('>>>$', (i) => {
-    //log.console(log.format(`&f>>>$&b ${i}`));
-    let x = i.toLowerCase();
-    let args = x.slice().trim().split(' ');
-    if(x.startsWith('say')) {
-      let channelID = args[1];
-      let msg = args.shift(2).toString();
-      client.channels.cache.get(channelID).send(msg);
-      log.console(args);
-      consoleCommands();
-    }
-    else if(x.startsWith('shutdown')) {
-      log.console(log.format(`&aVIA CONSOLE\n&6APaperBot is shutting down...`));
-      process.exit();
-    }
-    else if(x.startsWith('restart')) {
-      log.console(log.format(`&aVIA CONSOLE\n&6APaperBot is Restarting...`));
-      client.destroy();
-      //emitter.setMaxListeners(0); //0 means infinite
-      client.login(token);
-      log.console(log.format('&6APaperBot has restarted!'));
-      fileCheck();
-      consoleCommands();
-    }
-    else if(x.startsWith('help')) {
-      log.console(log.format('&aVIA CONSOLE\n&bConsole Help Commands\nSay [&fCHANNEL ID&b] [&fMESSAGE&b]\nShutdown\nRestart\nuser [&fsuperuser &b/&f count &b/&f total&b]\nserver\nstatus'));
-      consoleCommands();
-    }
-    else if(x.startsWith('version')) {
-      log.console(log.format(`&bCurrent version is [${version}]`));
-      consoleCommands();
-    }
-    else if(x.startsWith('user')) {
-      if(args[1] === 'superuser') {
-        log.console(log.format(`&bCurrent Super-Users are: ${SuperUserList}`));
-        consoleCommands();
-      }
-      else if(args[1] === 'count') {
-        log.console(log.format(`&bTotal members in ${taggedGuild}: ${taggedUsers}`));
-        consoleCommands();
-      }
-      else if(args[1] === 'total') {
-        log.console(log.format(`&bTotal cached users: ${cachedUsers}\nTotal guilds: ${cachedGuilds}`));
-        consoleCommands();
-      }
-    }
-    else if(x.startsWith('server')) {
-      log.console(log.format(`&bTotal Guilds: ${cachedGuilds}`));
-      consoleCommands();
-    }
-    else if(x.startsWith('status')) {
-      log.console(log.format(`&bEvent load: [${eventLoad}]\nCommand load: [${commandLoad}]\nReply load: [${replyLoad}]`));
-      consoleCommands();
-    }
-    else {
-      consoleCommands();
-    }
-  })
-}
+// function consoleCommands() {
+//   rl.question('>>>$', (i) => {
+//     //log.console(log.format(`&f>>>$&b ${i}`));
+//     let x = i.toLowerCase();
+//     let args = x.slice().trim().split(' ');
+//     if(x.startsWith('say')) {
+//       let channelID = args[1];
+//       let msg = args.shift(2).toString();
+//       client.channels.cache.get(channelID).send(msg);
+//       log.console(args);
+//       consoleCommands();
+//     }
+//     else if(x.startsWith('shutdown')) {
+//       log.console(log.format(`&aVIA CONSOLE\n&6APaperBot is shutting down...`));
+//       process.exit();
+//     }
+//     else if(x.startsWith('restart')) {
+//       log.console(log.format(`&aVIA CONSOLE\n&6APaperBot is Restarting...`));
+//       client.destroy();
+//       //emitter.setMaxListeners(0); //0 means infinite
+//       client.login(token);
+//       log.console(log.format('&6APaperBot has restarted!'));
+//       fileCheck();
+//       consoleCommands();
+//     }
+//     else if(x.startsWith('help')) {
+//       log.console(log.format('&aVIA CONSOLE\n&bConsole Help Commands\nSay [&fCHANNEL ID&b] [&fMESSAGE&b]\nShutdown\nRestart\nuser [&fsuperuser &b/&f count &b/&f total&b]\nserver\nstatus'));
+//       consoleCommands();
+//     }
+//     else if(x.startsWith('version')) {
+//       log.console(log.format(`&bCurrent version is [${version}]`));
+//       consoleCommands();
+//     }
+//     else if(x.startsWith('user')) {
+//       if(args[1] === 'superuser') {
+//         log.console(log.format(`&bCurrent Super-Users are: ${SuperUserList}`));
+//         consoleCommands();
+//       }
+//       else if(args[1] === 'count') {
+//         log.console(log.format(`&bTotal members in ${taggedGuild}: ${taggedUsers}`));
+//         consoleCommands();
+//       }
+//       else if(args[1] === 'total') {
+//         log.console(log.format(`&bTotal cached users: ${cachedUsers}\nTotal guilds: ${cachedGuilds}`));
+//         consoleCommands();
+//       }
+//     }
+//     else if(x.startsWith('server')) {
+//       log.console(log.format(`&bTotal Guilds: ${cachedGuilds}`));
+//       consoleCommands();
+//     }
+//     else if(x.startsWith('status')) {
+//       log.console(log.format(`&bEvent load: [${eventLoad}]\nCommand load: [${commandLoad}]\nReply load: [${replyLoad}]`));
+//       consoleCommands();
+//     }
+//     else {
+//       consoleCommands();
+//     }
+//   })
+// }
 
 
 function fileCheck() {

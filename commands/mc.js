@@ -2,10 +2,9 @@ module.exports = {
     name: 'mc',
     description: 'Check server\'s online status and players. Data is updated every 5 minutes',
     args: '<ip address>',
-    execute(message, args) {
+    execute(client, message, args) {
       const https = require('https');
       const Discord = require('discord.js');
-      const client = new Discord.Client();
       const { minecraft } = require('../integrations.json');
 
         //check if there're arguments
