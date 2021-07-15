@@ -25,7 +25,7 @@ module.exports = (client, message) => {
           else {
             message.channel.send('fuck');
           }
-          log.console(log.format('&aprefixless command \'Jelly\' was issued\n'));
+          log.console(log.format(`&areply JELLY was used in server: ${message.guild.name}\n`));
         }
         catch (err) {
           log.error(log.format(`&c${err}`));

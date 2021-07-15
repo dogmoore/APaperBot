@@ -23,7 +23,7 @@ module.exports = (client, message) => {
         else {
           message.channel.send('But edy....');
         }
-        log.console(log.format('&aprefixless command \'Eden\' was issued\n'));
+        log.console(log.format(`&areply EDEN was used in server: ${message.guild.name}\n`));
       }
     }
   }

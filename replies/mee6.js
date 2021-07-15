@@ -10,7 +10,7 @@ module.exports = (client, message) => {
         let channelID = message.channel.id;
         if (channelID === '759177774870036480') {
           message.reply('fuck off');
-          log.console(log.format('&aprefixless command \'Mee6\' was issued\n'));
+          log.console(log.format(`&areply MEE6 was used in server: ${message.guild.name}\n`));
         }
       }
       else if (message.content.includes(emote)) {

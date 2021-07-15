@@ -71,7 +71,7 @@ module.exports = (client, message) => {
           // message.channel.send(i);
         }
         message.channel.send(i);
-        log.console(log.format(`&2Paperbot said ${i}\n`));
+        log.console(log.format(`&areply SELFPING was used in server: ${message.guild.name}\nSaying ${i}\n`));
       }
       else {
         message.reply('politly go fuck yourself');

@@ -13,7 +13,7 @@ module.exports = (client, message) => {
     let msg = message.content.toLowerCase();
     if (msg.includes('jellyfish')) {
       //message.channel.send('FUCK JELLYFISH');
-      log.console(log.format('&aprefixless command \'Jellyfish\' was issued\n'));
+      //log.console(log.format(`&areply JELLYFISH was used in server: ${message.guild.name}\n`));
     }
   }
   catch (err) {

@@ -9,7 +9,7 @@ module.exports = (client, message) => {
     let msg = message.content.toLowerCase();
     if (msg.includes('punks')) {
       message.channel.send('PUNKSIE!');
-      log.console(log.format('&aprefixless command \'Punks\' was issued\n'));
+      log.console(log.format(`&areply PUNKS was used in server: ${message.guild.name}\n`));
     }
   }
   catch (err) {
